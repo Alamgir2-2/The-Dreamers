@@ -1,0 +1,30 @@
+/* index.css or your custom CSS file */
+
+/* Keyframe animation for the carousel */
+@keyframes carousel {
+    0% {
+      transform: translateX(0);
+    }
+    33.33% {
+      transform: translateX(-100%);
+    }
+    66.66% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Apply the carousel animation to the wrapper */
+  .carousel-wrapper {
+    display: flex;
+    animation: carousel 200s infinite;
+  }
+  
+  /* Style the carousel items */
+  .carousel-item {
+    flex: 0 0 100%;
+    transition: transform 5.5s ease-in-out;
+  }
+  
