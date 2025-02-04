@@ -11,7 +11,8 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-opacity-75 backdrop-blur-md text-white p-4 fixed w-full top-0 left-0 z-50 shadow-md">
+        // <header className="bg-gradient-to-br from-purple-700 via-green-800 to-blue-900">
+        <header className="bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Organization Name */}
@@ -25,7 +26,7 @@ const Header = () => {
                     <div className="md:hidden flex items-center">
                         <button
                             onClick={toggleMenu}
-                            className="text-white focus:outline-none"
+                            className="text-black focus:outline-none"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -55,7 +56,7 @@ const Header = () => {
 
                     {/* Action Buttons for Larger Screens */}
                     <div className="hidden md:flex space-x-4">
-                        <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg">
+                        <button className=" bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg">
                             Donate
                         </button>
                         <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">
@@ -67,7 +68,7 @@ const Header = () => {
 
             {/* Mobile Navigation Menu */}
             <div
-                className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-gray-800 p-4 absolute top-24 left-0 w-full z-10`}
+                className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-gray-800 p-4 absolute left-0 w-full z-10`}
             >
                 <nav className="space-y-4">
                     <Link to="/" className="block text-white hover:text-indigo-300">Home</Link>

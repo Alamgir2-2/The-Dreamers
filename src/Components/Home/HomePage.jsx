@@ -6,11 +6,13 @@ import { motion } from "framer-motion";
 import image1 from "../../assets/Images/image1.JPG"; // Import your images
 import image2 from "../../assets/Images/image2.JPG";
 import image3 from "../../assets/Images/image3.JPG";
+import MissionSection from "../Home/MissionSection.jsx";
 
 const Home = () => {
     return (
-        <div className="bg-gradient-to-br from-purple-700 via-green-800 to-blue-900
-">
+        //         <div className="bg-gradient-to-br from-purple-700 via-green-800 to-blue-900
+        // ">
+        <div className="">
             {/* Hero Section with Background Image Carousel */}
             <section className="relative text-white py-50 text-center">
                 {/* Background Image Carousel */}
@@ -32,10 +34,10 @@ const Home = () => {
                 </div>
 
                 {/* Hero Content */}
-                <h1 className="text-5xl font-bold relative z-10">
+                <h1 className="text-5xl font-bold relative">
                     Welcome to দ্যা ড্রিমার্স
                 </h1>
-                <p className="mt-4 text-lg relative z-10">
+                <p className="mt-4 text-lg relative">
                     A Student & Social Welfare Organization
                 </p>
                 <div className="mt-6 relative z-10">
@@ -47,8 +49,10 @@ const Home = () => {
                     </Link>
                 </div>
             </section>
+            
+            <MissionSection></MissionSection>
 
-      {/* // Blog Section */}
+            {/* // Blog Section */}
             <section className="py-16 px-6 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -74,7 +78,7 @@ const Home = () => {
                         <motion.div
                             key={id}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
+                            className="bg-opacity-25 p-6 rounded-lg shadow-md hover:shadow-lg transition"
                         >
                             <motion.h3
                                 initial={{ opacity: 0 }}
@@ -107,7 +111,7 @@ const Home = () => {
                 </div>
             </section>
 
-{/* // Image Gallery Section */}
+            {/* // Image Gallery Section */}
             <section className="bg-white py-16 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -144,7 +148,7 @@ const Home = () => {
                 </div>
             </section>
 
-{/* // Call to Action Section */}
+            {/* // Call to Action Section */}
             <section className=" text-white py-16 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
