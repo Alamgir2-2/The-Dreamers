@@ -2,26 +2,40 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 const branchData = {
+    
     1: {
         president: {
-            name: "John Doe",
+            name: "Nazmul Hossain",
             image: "/images/president1.jpg",
-            details: "President of Branch 1",
+            details: "President of Samonta Branch",
         },
         members: [
-            { name: "Alice", age: 22, institution: "XYZ University", bloodGroup: "A+" },
-            { name: "Bob", age: 25, institution: "ABC College", bloodGroup: "O-" },
+            { name: "Asif Khan", age: 22, institution: "City College, Jashore", bloodGroup: "B+" },
+            { name: "Ismail Hossain ", age: 24, institution: "Shohidul Islam Degree College", bloodGroup: "B+" },
         ],
     },
+    
     2: {
         president: {
-            name: "Jane Smith",
+            name: "Mostakim Ahmed",
             image: "/images/president2.jpg",
-            details: "President of Branch 2",
+            details: "President of Jhinnanagar Branch",
         },
         members: [
-            { name: "Charlie", age: 21, institution: "LMN University", bloodGroup: "B+" },
-            { name: "Dave", age: 23, institution: "PQR Institute", bloodGroup: "AB-" },
+            { name: "Tanvir Ahmed", age: 26, institution: "City College, Jashore", bloodGroup: "B+" },
+            { name: "Saklain Mustak", age: 24, institution: "City College, Jashore", bloodGroup: "B+" },
+        ],
+    },
+
+    5: {
+        president: {
+            name: "Shadikul Islam",
+            image: "/images/president1.jpg",
+            details: "President of Jashore Branch",
+        },
+        members: [
+            { name: "Shofiul Bashar", age: 26, institution: "City College, Jashore", bloodGroup: "B+" },
+            { name: "Saklain Mustak", age: 24, institution: "Jashore University of Science and Technology", bloodGroup: "B+" },
         ],
     },
 };
