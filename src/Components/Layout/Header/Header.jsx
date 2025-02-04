@@ -43,15 +43,15 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex space-x-6 relative">
-                        <Link to="/" className="hover:text-indigo-300">Home</Link>
-                        <Link to="/blogs" className="hover:text-indigo-300">Blogs</Link>
-                        <Link to="/events" className="hover:text-indigo-300">Events</Link>
-                        <Link to="/about" className="hover:text-indigo-300">About Us</Link>
-                        <Link to="/contact" className="hover:text-indigo-300">Contact Us</Link>
-                        
+                        <Link to="/" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Home</Link>
+                        <Link to="/blogs" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Blogs</Link>
+                        <Link to="/events" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Events</Link>
+                        <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+                        <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
+
                         {/* Branches Dropdown */}
                         <div className="relative">
-                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="hover:text-indigo-300">
+                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">
                                 Branches
                             </button>
                             {isBranchesOpen && (
@@ -82,7 +82,7 @@ const Header = () => {
                     <Link to="/events" className="block text-white hover:text-indigo-300">Events</Link>
                     <Link to="/about" className="block text-white hover:text-indigo-300">About Us</Link>
                     <Link to="/contact" className="block text-white hover:text-indigo-300">Contact Us</Link>
-                    
+
                     {/* Mobile Branches Dropdown */}
                     <div>
                         <button onClick={() => setIsBranchesOpen(!isBranchesOpen)} className="text-white hover:text-indigo-300 w-full text-left">

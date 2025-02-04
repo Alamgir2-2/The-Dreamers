@@ -40,7 +40,7 @@ const Home = () => {
                 <p className="mt-4 text-lg relative">
                     A Student & Social Welfare Organization
                 </p>
-                <div className="mt-6 relative z-10">
+                <div className="mt-6 relative">
                     <Link
                         to="/about"
                         className="bg-white text-indigo-600 px-6 py-3 rounded-lg shadow-md text-lg font-semibold hover:bg-gray-100 transition"
