@@ -6,7 +6,7 @@ const BloodGroupPage = () => {
     // Sample Data for Blood Donors (Replace with database later)
     const donorsData = {
         "a-positive": [
-            { id: 1, name: "John Doe", phone: "+1234567890", address: "123 Main St, City", institute: "ABC University", image: "https://via.placeholder.com/100" },
+            { id: 1, name: "Shadikul Islam", phone: "+1234567890", address: "Apon Mor, Jashore", institute: "Govt. M M College, Jashore", image: "https://via.placeholder.com/100" },
             { id: 2, name: "Alice Smith", phone: "+9876543210", address: "456 Elm St, Town", institute: "XYZ College", image: "https://via.placeholder.com/100" }
         ],
         "b-positive": [
