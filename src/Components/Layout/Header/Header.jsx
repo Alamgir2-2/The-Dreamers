@@ -3,19 +3,35 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/Images/logo.png";
 
 const branches = [
-    { name: "Branch 1", path: "/branches/1" },
-    { name: "Branch 2", path: "/branches/2" },
-    { name: "Branch 3", path: "/branches/3" },
-    { name: "Branch 4", path: "/branches/4" },
-    { name: "Branch 5", path: "/branches/5" },
-    { name: "Branch 6", path: "/branches/6" },
-    { name: "Branch 7", path: "/branches/7" },
-    { name: "Branch 8", path: "/branches/8" }
+    { name: "Samonta", path: "/branches/1" },
+    { name: "Jhinnah Nagar", path: "/branches/2" },
+    { name: "Mahespur", path: "/branches/3" },
+    { name: "Jhenaidah", path: "/branches/4" },
+    { name: "Jashore", path: "/branches/5" },
+    { name: "Rajshahi", path: "/branches/6" },
+    { name: "Dhaka", path: "/branches/7" },
+    { name: "Centrally controlled", path: "/branches/8" }
 ];
+
+const bloodGroups = [
+    { name: "A Positive (A+) ", path: "/blood-groups/a-positive" },
+    { name: "A Negetive (A-)", path: "/blood-groups/a-negative" },
+    { name: "B Positive (B+)", path: "/blood-groups/b-positive" },
+    { name: "B Negetive (B-)", path: "/blood-groups/b-negative" },
+    { name: "O Positive (O+)", path: "/blood-groups/o-positive" },
+    { name: "O Negetive (O-)", path: "/blood-groups/o-negative" },
+    { name: "AB Positive (AB+)", path: "/blood-groups/ab-positive" },
+    { name: "AB Negetive (AB-)", path: "/blood-groups/ab-negative" }
+];
+
+
+
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isBranchesOpen, setIsBranchesOpen] = useState(false);
+    const [isBloodGroupsOpen, setIsBloodGroupsOpen] = useState(false);
+
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -46,8 +62,6 @@ const Header = () => {
                         <Link to="/" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Home</Link>
                         <Link to="/blogs" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Blogs</Link>
                         <Link to="/events" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Events</Link>
-                        <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
-                        <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
 
                         {/* Branches Dropdown */}
                         <div className="relative">
@@ -64,6 +78,34 @@ const Header = () => {
                                 </div>
                             )}
                         </div>
+
+                        {/* Blood Groups Dropdown */}
+                        <div className="relative">
+                            <button
+                                onMouseEnter={() => setIsBloodGroupsOpen(true)}
+                                onMouseLeave={() => setIsBloodGroupsOpen(false)}
+                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
+                            >
+                                Blood Groups
+                            </button>
+                            {isBloodGroupsOpen && (
+                                <div
+                                    className="absolute left-0 mt-2 w-48 bg-white shadow-md rounded-lg z-10"
+                                    onMouseEnter={() => setIsBloodGroupsOpen(true)}
+                                    onMouseLeave={() => setIsBloodGroupsOpen(false)}
+                                >
+                                    {bloodGroups.map((group) => (
+                                        <Link key={group.path} to={group.path} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                            {group.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+                        <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
+
                     </nav>
 
                     {/* Action Buttons */}
@@ -98,6 +140,25 @@ const Header = () => {
                             </div>
                         )}
                     </div>
+
+
+                    {/* Mobile Blood Groups Dropdown */}
+                    <div>
+                        <button onClick={() => setIsBloodGroupsOpen(!isBloodGroupsOpen)} className="text-white hover:text-indigo-300 w-full text-left">
+                            Blood Groups
+                        </button>
+                        {isBloodGroupsOpen && (
+                            <div className="mt-2 bg-gray-700 rounded-lg">
+                                {bloodGroups.map((group) => (
+                                    <Link key={group.path} to={group.path} className="block px-4 py-2 text-white hover:bg-gray-600">
+                                        {group.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
+
 
                     <div className="mt-4 space-x-4">
                         <button className="bg-green-500 my-2 hover:bg-green-600 text-white py-2 px-4 rounded-lg w-full text-center">Donate</button>
