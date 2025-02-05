@@ -1,5 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import mesbah from "../../../assets/Images/mezbah.jpg"
+import { img } from "framer-motion/client";
 
 const branchData = {
     
@@ -30,7 +32,7 @@ const branchData = {
     5: {
         president: {
             name: "Shadikul Islam",
-            image: "/images/president1.jpg",
+            image: [mesbah],
             details: "President of Jashore Branch",
         },
         members: [
