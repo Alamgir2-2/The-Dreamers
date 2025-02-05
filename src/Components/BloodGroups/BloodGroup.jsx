@@ -95,6 +95,7 @@ import { useState } from "react";
 import { Search, X } from "lucide-react";
 import mesbah from "../../assets/Images/mezbah.jpg"
 import alamgir from "../../assets/Images/alamgir.jpg"
+import nadim from "../../assets/Images/nadim.jpg"
 
 
 const BloodGroupPage = () => {
@@ -112,10 +113,14 @@ const BloodGroupPage = () => {
             { id: 7, name: "Alice Smith", phone: "+9876543210", address: "456 Elm St, Town", institute: "XYZ College", image: "https://via.placeholder.com/150" }
         ],
         "b-positive": [
-            { id: 8, name: "Robert Brown", phone: "+1122334455", address: "789 Oak St, Metro", institute: "LMN Institute", image: "https://via.placeholder.com/150" }
+            { id: 8, name: "Robert Brown", phone: "+1122334455", address: "789 Oak St, Metro", institute: "LMN Institute", image: "https://via.placeholder.com/150" },
+            { id: 9, name: "Md Alamgir Hossain", phone: "01319502545", address: "Kulbaria, Maheshpur, Jhenaidah", institute: "Noakhali Science and Technology University", image: [alamgir] }
         ],
         "o-negative": [
-            { id: 9, name: "Michael Lee", phone: "+5566778899", address: "202 Cedar St, Rural", institute: "RST University", image: "https://via.placeholder.com/150" }
+            { id: 10, name: "Michael Lee", phone: "+5566778899", address: "202 Cedar St, Rural", institute: "RST University", image: "https://via.placeholder.com/150" }
+        ],
+        "ab-positive":[
+            { id: 11, name: "Nadim Parvez Emon", phone: "01953348774", address: "Nishchintopur, Maheshpur, Jhenaidah", institute: "Shaheed Suhrawardy Medical College", image: [nadim] },
         ]
     };
 
@@ -135,21 +140,21 @@ const BloodGroupPage = () => {
             {/* Header Section */}
 
             <div className="sticky top-12 bg-white z-10 p-4 shadow-lg rounded-md flex flex-col gap-3">
-                <div className="bg-red-500 text-white p-6 rounded-xl shadow-lg text-center">
-                    <h1 className="text-4xl font-extrabold capitalize">{bloodGroup.replace("-", " ")} Blood Donors</h1>
-                    <p className="mt-2 text-lg">Find and contact blood donors near you.</p>
+                <div className="bg-red-500 text-white p-2 rounded-xl shadow-lg text-center">
+                    <h1 className="text-3xl font-extrabold capitalize">{bloodGroup.replace("-", " ")} Blood Donors</h1>
+                    <p className="mt-2">Find and contact blood donors near you.</p>
                 </div>
 
                 {/* Search Box */}
-                <div className="relative mt-6 max-w-lg mx-auto">
+                <div className="relative mt-2 max-w-lg mx-auto">
                     <input
                         type="text"
                         placeholder="Search"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full p-4 pl-12 border rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                        className="w-full p-2 pl-16 border rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-400"
                     />
-                    <Search className="absolute left-4 top-4 text-gray-500" size={24} />
+                    <Search className="absolute left-4 top-2 text-gray-500" size={24} />
                     {searchTerm && (
                         <button
                             className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
