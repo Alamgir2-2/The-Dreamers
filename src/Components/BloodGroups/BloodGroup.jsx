@@ -139,9 +139,9 @@ const BloodGroupPage = () => {
         <div className="max-w-5xl mx-auto p-6  min-h-screen">
             {/* Header Section */}
 
-            <div className="sticky top-12 bg-white z-10 p-4 shadow-lg rounded-md flex flex-col gap-3">
+            <div className="sticky top-16 bg-white z-10 p-4 shadow-lg rounded-md flex flex-col gap-3">
                 <div className="bg-red-500 text-white p-2 rounded-xl shadow-lg text-center">
-                    <h1 className="text-3xl font-extrabold capitalize">{bloodGroup.replace("-", " ")} Blood Donors</h1>
+                    <h1 className="text-3xl font-bold capitalize">{bloodGroup.replace("-", " ")} Blood Donors</h1>
                     <p className="mt-2">Find and contact blood donors near you.</p>
                 </div>
 
