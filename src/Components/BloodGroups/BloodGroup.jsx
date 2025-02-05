@@ -172,7 +172,7 @@ const BloodGroupPage = () => {
                     filteredDonors.map((donor) => (
                         <div key={donor.id} className="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-transform transform hover:scale-105">
                             <div className="flex flex-col items-center text-center">
-                                <img src={donor.image} alt={donor.name} className="w-24 h-24 rounded-full border-4 border-red-500" />
+                                <img src={donor.image} alt={donor.name} className="w-24 h-24 object-cover rounded-full border-4 border-red-500" />
                                 <h2 className="text-lg font-semibold mt-1">{donor.name}</h2>
                                 <p className="text-gray-600 mt-1 text-sm">📞 {donor.phone}</p>
                                 <p className="text-gray-600 text-sm">🏠 {donor.address}</p>

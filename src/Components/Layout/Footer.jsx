@@ -51,7 +51,7 @@ const Footer = () => {
                             <a href="https://www.facebook.com/WeTheDreamersbd" className="text-gray-400 hover:text-blue-500 transition">
                                 <FaFacebook size={24} />
                             </a>
-                            <a href="https://www.youtube.com/@thedreamersofficial-d2w" className="text-gray-400 hover:text-blue-700 transition">
+                            <a href="https://www.youtube.com/@thedreamersofficial-d2w" className="text-gray-400 hover:text-red-500 transition">
                                 <FaYoutube size={24} />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-sky-400 transition">

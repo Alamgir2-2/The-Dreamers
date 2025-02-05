@@ -57,7 +57,7 @@ const BranchPage = () => {
                 <img
                     src={branch.president.image}
                     alt={branch.president.name}
-                    className="w-40 h-40 object-cover rounded-full"
+                    className="w-40 h-40 object-cover rounded-full border-4 border-red-500"
                 />
                 <div className="ml-6">
                     <h2 className="text-2xl font-bold">{branch.president.name}</h2>
