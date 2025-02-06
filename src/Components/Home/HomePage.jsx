@@ -7,6 +7,7 @@ import image1 from "../../assets/Images/image1.JPG"; // Import your images
 import image2 from "../../assets/Images/image2.JPG";
 import image3 from "../../assets/Images/image3.JPG";
 import MissionSection from "../Home/MissionSection.jsx";
+import BlogPage from "./BlogPage.jsx";
 
 const Home = () => {
     return (
@@ -51,8 +52,9 @@ const Home = () => {
             </section>
             
             <MissionSection></MissionSection>
+            <BlogPage></BlogPage>
 
-            {/* // Blog Section */}
+            {/* // Blog Section
             <section className="py-16 px-6 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -109,7 +111,7 @@ const Home = () => {
                         </motion.div>
                     ))}
                 </div>
-            </section>
+            </section> */}
 
             {/* // Image Gallery Section */}
             <section className="bg-white py-16 text-center">
