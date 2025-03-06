@@ -8,6 +8,7 @@ import image2 from "../../assets/Images/image2.JPG";
 import image3 from "../../assets/Images/image3.JPG";
 import MissionSection from "../Home/MissionSection.jsx";
 import BlogPage from "./BlogPage.jsx";
+import WhyDreamers from "./WhyDreamers.jsx";
 
 const Home = () => {
     return (
@@ -53,6 +54,7 @@ const Home = () => {
             
             <MissionSection></MissionSection>
             <BlogPage></BlogPage>
+            <WhyDreamers></WhyDreamers>
 
             {/* // Blog Section
             <section className="py-16 px-6 text-center">
@@ -151,7 +153,7 @@ const Home = () => {
             </section>
 
             {/* // Call to Action Section */}
-            <section className=" text-white py-16 text-center">
+            <section className=" text-black py-16 text-center">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
