@@ -36,13 +36,15 @@ const WhyDreamers = () => {
         <section className="flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-16 bg-white">
             {/* "Why Dreamers" div with title and animated icon */}
             <div className={`md:w-1/2 text-center md:text-left mb-10 md:mb-0 ${animate ? "animate-fadeIn" : ""} relative`}>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Dreamers?</h2>
-                <p className="text-base md:text-lg text-gray-600">Discover the reasons to be part of our inspiring community.</p>
+                <div className="text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Dreamers?</h2>
+                    <p className="text-base md:text-lg text-gray-600">Discover the reasons to be part of our inspiring community.</p>
+                </div>
 
                 {/* Animated PNG/Icon */}
                 <div className="mt-6 md:mt-10 mx-auto">
                     <img
-                        src={why} 
+                        src={why}
                         alt="Animated Icon"
                         className="w-60 h-60 md:w-60 md:h-60 mx-auto animate-pulse" // Adjust size for mobile and desktop
                     />
