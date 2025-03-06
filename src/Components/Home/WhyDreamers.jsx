@@ -1,4 +1,4 @@
-import { FaBookOpen, FaUsers, FaChalkboardTeacher, FaBriefcase } from "react-icons/fa";
+import { FaBookOpen, FaUsers, FaChalkboardTeacher, FaBriefcase, FaTree, FaHandsHelping, FaHeartbeat, FaGlobeAmericas } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import why from "../../assets/Images/why.png";
 
@@ -11,26 +11,48 @@ const WhyDreamers = () => {
 
     const cards = [
         {
-            icon: <FaBookOpen className="text-4xl text-indigo-600 mb-4" />,
-            title: "Endless Learning Opportunities",
-            description: "Access a vast library of courses and resources to enhance your skills and knowledge."
+            icon: <FaBookOpen className="text-4xl text-green-600 mb-4" />,
+            title: "Endless Learning Opportunities", //Educational Support
+            description: "We provide free educational resources, mentorship, and skill development programs to help students excel in their academic and professional journeys."
         },
         {
-            icon: <FaUsers className="text-4xl text-indigo-600 mb-4" />,
-            title: "Community Support",
-            description: "Join a network of like-minded individuals who support and inspire each other."
+            icon: <FaUsers className="text-4xl text-green-600 mb-4" />,
+            title: "Community Engagement",
+            description: "Join a strong network of students and volunteers dedicated to creating a positive impact through social initiatives and collaborative efforts."
         },
         {
-            icon: <FaChalkboardTeacher className="text-4xl text-indigo-600 mb-4" />,
-            title: "Expert Mentorship",
-            description: "Learn from industry professionals and gain real-world insights."
+            icon: <FaChalkboardTeacher className="text-4xl text-green-600 mb-4" />,
+            title: "Guidance & Mentorship",
+            description: "Our experienced mentors guide students with career advice, academic counseling, and leadership training to empower future change-makers."
         },
         {
-            icon: <FaBriefcase className="text-4xl text-indigo-600 mb-4" />,
-            title: "Career Advancement",
-            description: "Boost your career with certified courses and hands-on projects."
-        }
+            icon: <FaBriefcase className="text-4xl text-green-600 mb-4" />,
+            title: "Social Welfare Initiatives",
+            description: "We actively participate in humanitarian efforts such as relief programs, environmental campaigns, and community service to uplift underprivileged sections of society."
+        },
+        // {
+        //     icon: <FaHandsHelping className="text-4xl text-green-600 mb-4" />,
+        //     title: "Volunteer & Leadership Opportunities",
+        //     description: "Students can engage in voluntary work, develop leadership skills, and contribute to meaningful social causes that create lasting change."
+        // },
+        // {
+        //     icon: <FaTree className="text-4xl text-green-600 mb-4" />,
+        //     title: "Tree Plantation Drives",
+        //     description: "Our organization actively plants trees in schools, communities, and public spaces to promote a greener and healthier environment."
+        // },
+        // {
+        //     icon: <FaHeartbeat className="text-4xl text-green-600 mb-4" />,
+        //     title: "Health & Well-being Programs",
+        //     description: "We organize health awareness campaigns, blood donation drives, and mental health support programs for the well-being of our community."
+        // },
+        // {
+        //     icon: <FaGlobeAmericas className="text-4xl text-green-600 mb-4" />,
+        //     title: "Sustainability & Environment",
+        //     description: "Through clean-up programs, awareness campaigns, and eco-friendly initiatives, we encourage students to take responsibility for a greener future."
+        // }
     ];
+    
+    
 
     return (
         <section className="flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-16 bg-white">
