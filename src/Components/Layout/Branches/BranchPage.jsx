@@ -134,11 +134,11 @@ const branchData = {
 
 const Sidebar = ({ setActiveSection }) => {
     return (
-        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-blue-300">
-            <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Activities</button>
-            <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">President</button>
-            <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Members</button>
-            <button onClick={() => setActiveSection("branchDetails")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Branch Details</button>
+        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-green-300">
+            <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Activities</button>
+            <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">President</button>
+            <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Members</button>
+            <button onClick={() => setActiveSection("branchDetails")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Branch Details</button>
         </div>
     );
 };
@@ -150,10 +150,10 @@ const MainContent = ({ branch, activeSection }) => {
     );
 
     return (
-        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-blue-300">
+        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-green-300">
             {activeSection === "activities" && (
                 <div>
-                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-blue-700">Branch Activities</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-700">Branch Activities</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {branch.activities.map((activity, index) => (
                             <div key={index} className="bg-gray-50 p-4 shadow-md rounded-lg  hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeIn">
@@ -168,9 +168,9 @@ const MainContent = ({ branch, activeSection }) => {
 
             {activeSection === "president" && (
                 <div className="flex flex-col md:flex-row items-center bg-gray-50 p-4 shadow-md rounded-lg">
-                    <img src={branch.president.image} alt={branch.president.name} className="w-24 items-center md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-blue-500" />
+                    <img src={branch.president.image} alt={branch.president.name} className="w-24 items-center md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-green-500" />
                     <div className="ml-0 p-4 md:ml-4 ">
-                        <h2 className="text-xl md:text-2xl font-bold text-blue-700 mb-2">{branch.president.name}</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-green-700 mb-2">{branch.president.name}</h2>
                         <p className="text-gray-600"><span className="font-bold">Profession: </span>{branch.president.profession}</p>
                         <p className="text-gray-600"><span className="font-bold">Education: </span> {branch.president.education}</p>
                         <p className="italic text-gray-700"><span className="font-bold">Quotes </span>"{branch.president.quote}"</p>
@@ -191,7 +191,7 @@ const MainContent = ({ branch, activeSection }) => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {filteredMembers.map((member, index) => (
                             <div key={index} className="flex items-center bg-gray-50 p-4 shadow-md rounded-lg">
-                                <img src={member.image} alt={member.name} className="w-16 md:w-20 h-16 md:h-20 object-cover rounded-full border-2 border-blue-500" />
+                                <img src={member.image} alt={member.name} className="w-16 md:w-20 h-16 md:h-20 object-cover rounded-full border-2 border-green-500" />
                                 <div className="ml-4">
                                     <h4 className="font-bold text-lg">{member.name}</h4>
                                     <p className="text-gray-600">Profession: {member.profession}</p>
@@ -206,7 +206,7 @@ const MainContent = ({ branch, activeSection }) => {
 
             {activeSection === "branchDetails" && (
                 <div>
-                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-blue-700">Branch Details</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-700">Branch Details</h3>
                     <p><strong>Branch Name:</strong> {branch.name}</p>
                     <p><strong>Location:</strong> {branch.location}</p>
                 </div>
@@ -226,7 +226,7 @@ const BranchPage = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6">
-            <div className="bg-blue-600 text-white p-5 rounded-lg text-center mb-6">
+            <div className="bg-green-600 text-white p-5 rounded-lg text-center mb-6">
                 <h1 className="text-2xl md:text-4xl font-bold">{branch.name}</h1>
                 {/* <p className="text-lg">Location: {branch.location}</p> */}
             </div>
