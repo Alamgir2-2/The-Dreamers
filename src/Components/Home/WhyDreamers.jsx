@@ -51,8 +51,8 @@ const WhyDreamers = () => {
         //     description: "Through clean-up programs, awareness campaigns, and eco-friendly initiatives, we encourage students to take responsibility for a greener future."
         // }
     ];
-    
-    
+
+
 
     return (
         <section className="flex flex-col md:flex-row items-center justify-center py-16 px-4 md:px-16 bg-white">
@@ -74,18 +74,46 @@ const WhyDreamers = () => {
             </div>
 
             {/* Cards Section */}
-            <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-4">
+            {/* <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-4">
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className="p-6 bg-white shadow-lg rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-2 flex flex-col items-center text-center border border-gray-200"
+                        className="p-6 bg-green-50 shadow-lg rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-2 flex flex-col items-center text-center border border-gray-200"
                     >
                         {card.icon}
                         <h3 className="text-xl font-semibold text-gray-800 mb-2">{card.title}</h3>
                         <p className="text-gray-600">{card.description}</p>
                     </div>
                 ))}
+            </div> */}
+
+
+            {/* Cards Section */}
+            <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-4">
+                {cards.map((card, index) => {
+                    const colors = [
+                        "bg-blue-50",
+                        "bg-yellow-50",
+                        "bg-red-50",
+                        "bg-green-50",
+                        "bg-purple-50",
+                        "bg-pink-50"
+                    ]; // Add more colors if needed
+                    const bgColor = colors[index % colors.length]; // Cycle through colors
+
+                    return (
+                        <div
+                            key={index}
+                            className={`p-6 ${bgColor} shadow-lg rounded-2xl hover:shadow-2xl transition-all transform hover:-translate-y-2 flex flex-col items-center text-center border border-gray-200`}
+                        >
+                            {card.icon}
+                            <h3 className="text-xl font-semibold text-gray-800 mb-2">{card.title}</h3>
+                            <p className="text-gray-600">{card.description}</p>
+                        </div>
+                    );
+                })}
             </div>
+
         </section>
     );
 }

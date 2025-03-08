@@ -104,6 +104,8 @@ const branchData = {
         members: [
             { name: "Asif Khan", age: 22, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member1.jpg", profession: "Student" },
             { name: "Ismail Hossain", age: 24, institution: "Shohidul Islam Degree College", bloodGroup: "B+", image: "/images/member2.jpg", profession: "Teacher" },
+            { name: "Ismail Hossain", age: 24, institution: "Shohidul Islam Degree College", bloodGroup: "B+", image: "/images/member2.jpg", profession: "Teacher" },
+            { name: "Ismail Hossain", age: 24, institution: "Shohidul Islam Degree College", bloodGroup: "B+", image: "/images/member2.jpg", profession: "Teacher" },
         ],
         activities: [
             { title: "Food Distribution", description: "Distributed food among 200+ people.", image: "/images/food.jpg" },
@@ -135,10 +137,10 @@ const branchData = {
 const Sidebar = ({ setActiveSection }) => {
     return (
         <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-green-300">
-            <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Activities</button>
-            <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">President</button>
-            <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Members</button>
-            <button onClick={() => setActiveSection("branchDetails")} className="w-full mb-2 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700">Branch Details</button>
+            <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-[#078d83] text-white rounded-lg hover:bg-[#085a54]">Activities</button>
+            <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-[#078d83] text-white rounded-lg hover:bg-[#085a54]">President</button>
+            <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-[#078d83] text-white rounded-lg hover:bg-[#085a54]">Members</button>
+            <button onClick={() => setActiveSection("branchDetails")} className="w-full mb-2 p-3 bg-[#078d83] text-white rounded-lg hover:bg-[#085a54]">Branch Details</button>
         </div>
     );
 };
@@ -167,14 +169,14 @@ const MainContent = ({ branch, activeSection }) => {
             )}
 
             {activeSection === "president" && (
-                <div className="flex flex-col md:flex-row items-center bg-gray-50 p-4 shadow-md rounded-lg">
-                    <img src={branch.president.image} alt={branch.president.name} className="w-24 items-center md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-green-500" />
+                <div className="flex flex-col md:flex-col items-center bg-gray-50 p-4 shadow-lg rounded-lg">
+                    <img src={branch.president.image} alt={branch.president.name} className="w-24 h-24 items-center md:w-32 md:h-32 rounded-full border-4 border-green-500" />
                     <div className="ml-0 p-4 md:ml-4 ">
-                        <h2 className="text-xl md:text-2xl font-bold text-green-700 mb-2">{branch.president.name}</h2>
-                        <p className="text-gray-600"><span className="font-bold">Profession: </span>{branch.president.profession}</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-green-700 mb-5 text-center">{branch.president.name}</h2>
+                        <p className="text-gray-600 mt-10"><span className="font-bold">Profession: </span>{branch.president.profession}</p>
                         <p className="text-gray-600"><span className="font-bold">Education: </span> {branch.president.education}</p>
                         <p className="italic text-gray-700"><span className="font-bold">Quotes </span>"{branch.president.quote}"</p>
-                        <p className="text-gray-600"><span className="font-bold">Mission: </span> {branch.president.mission}</p>
+                        <p className="text-gray-600 mt-8"><span className="font-bold">Mission: </span> {branch.president.mission}</p>
                     </div>
                 </div>
             )}
@@ -188,7 +190,7 @@ const MainContent = ({ branch, activeSection }) => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {filteredMembers.map((member, index) => (
                             <div key={index} className="flex items-center bg-gray-50 p-4 shadow-md rounded-lg">
                                 <img src={member.image} alt={member.name} className="w-16 md:w-20 h-16 md:h-20 object-cover rounded-full border-2 border-green-500" />
@@ -226,7 +228,7 @@ const BranchPage = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6">
-            <div className="bg-green-600 text-white p-5 rounded-lg text-center mb-6">
+            <div style={{ backgroundColor: '#078d83' }} className="bg-green-600 text-white p-5 rounded-lg text-center mb-6">
                 <h1 className="text-2xl md:text-4xl font-bold">{branch.name}</h1>
                 {/* <p className="text-lg">Location: {branch.location}</p> */}
             </div>

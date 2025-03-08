@@ -14,7 +14,7 @@ const images = [
 
 const ImageGallery = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center justify-between min-h-screen px-20 py-16 bg-gray-100">
+    <section style={{ backgroundColor: '#e8fbfa' }} className="flex flex-col-reverse md:flex-row items-center justify-between min-h-screen px-20 py-16 ">
       {/* Left Side - Image Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full md:w-2/3">
         {images.map((src, index) => (
