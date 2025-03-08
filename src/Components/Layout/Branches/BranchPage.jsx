@@ -99,7 +99,7 @@ const branchData = {
             profession: "Social Worker",
             education: "MSc in Social Science",
             quote: "Together we make a difference.",
-            mission: "Empowering the community with education and support."
+            mission: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dignissimos in modi explicabo! Sit, fugit nostrum, rerum doloremque voluptates non doloribus, itaque officiis ab ea vel illo. Suscipit, aliquam similique."
         },
         members: [
             { name: "Asif Khan", age: 22, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member1.jpg", profession: "Student" },
@@ -134,7 +134,7 @@ const branchData = {
 
 const Sidebar = ({ setActiveSection }) => {
     return (
-        <div className="w-full md:w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
+        <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-blue-300">
             <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Activities</button>
             <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">President</button>
             <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Members</button>
@@ -150,13 +150,13 @@ const MainContent = ({ branch, activeSection }) => {
     );
 
     return (
-        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg">
+        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-blue-300">
             {activeSection === "activities" && (
                 <div>
                     <h3 className="text-xl md:text-2xl font-semibold mb-4 text-blue-700">Branch Activities</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {branch.activities.map((activity, index) => (
-                            <div key={index} className="bg-gray-50 p-4 shadow-md rounded-lg">
+                            <div key={index} className="bg-gray-50 p-4 shadow-md rounded-lg  hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeIn">
                                 <img src={activity.image} alt={activity.title} className="w-full h-40 object-cover rounded-md" />
                                 <h4 className="font-bold mt-2 text-lg">{activity.title}</h4>
                                 <p className="text-gray-600">{activity.description}</p>
@@ -168,13 +168,13 @@ const MainContent = ({ branch, activeSection }) => {
 
             {activeSection === "president" && (
                 <div className="flex flex-col md:flex-row items-center bg-gray-50 p-4 shadow-md rounded-lg">
-                    <img src={branch.president.image} alt={branch.president.name} className="w-24 md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-blue-500" />
-                    <div className="ml-0 md:ml-4  md:text-left">
-                        <h2 className="text-xl md:text-2xl text-center font-bold text-blue-700 mb-2">{branch.president.name}</h2>
-                        <p className="text-gray-600">Profession: {branch.president.profession}</p>
-                        <p className="text-gray-600">Education: {branch.president.education}</p>
-                        <p className="italic text-gray-700">"{branch.president.quote}"</p>
-                        <p className="text-gray-600">Mission: {branch.president.mission}</p>
+                    <img src={branch.president.image} alt={branch.president.name} className="w-24 items-center md:w-32 h-24 md:h-32 object-cover rounded-full border-4 border-blue-500" />
+                    <div className="ml-0 p-4 md:ml-4 ">
+                        <h2 className="text-xl md:text-2xl font-bold text-blue-700 mb-2">{branch.president.name}</h2>
+                        <p className="text-gray-600"><span className="font-bold">Profession: </span>{branch.president.profession}</p>
+                        <p className="text-gray-600"><span className="font-bold">Education: </span> {branch.president.education}</p>
+                        <p className="italic text-gray-700"><span className="font-bold">Quotes </span>"{branch.president.quote}"</p>
+                        <p className="text-gray-600"><span className="font-bold">Mission: </span> {branch.president.mission}</p>
                     </div>
                 </div>
             )}
@@ -184,7 +184,7 @@ const MainContent = ({ branch, activeSection }) => {
                     <input
                         type="text"
                         placeholder="Search members..."
-                        className="mb-4 p-2 w-full border rounded-lg"
+                        className="mb-4 p-2 w-full border rounded-lg border-amber-500"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -221,14 +221,14 @@ const BranchPage = () => {
     const [activeSection, setActiveSection] = useState("activities");
 
     if (!branch) {
-        return <div className="text-center text-red-500">Branch not found.</div>;
+        return <div className="text-center bg-amber-300 p-8 mx-10 my-10 text-red-500 rounded-lg">Branch Details not found.</div>;
     }
 
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6">
-            <div className="bg-blue-600 text-white p-4 rounded-lg text-center mb-6">
-                <h1 className="text-xl md:text-3xl font-bold">{branch.name}</h1>
-                <p className="text-lg">Location: {branch.location}</p>
+            <div className="bg-blue-600 text-white p-5 rounded-lg text-center mb-6">
+                <h1 className="text-2xl md:text-4xl font-bold">{branch.name}</h1>
+                {/* <p className="text-lg">Location: {branch.location}</p> */}
             </div>
             <div className="flex flex-col md:flex-row gap-4">
                 <Sidebar setActiveSection={setActiveSection} />
