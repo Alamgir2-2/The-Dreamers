@@ -15,16 +15,14 @@ const branches = [
 
 const bloodGroups = [
     { name: "A Positive (A+) ", path: "/blood-groups/a-positive" },
-    { name: "A Negetive (A-)", path: "/blood-groups/a-negative" },
+    { name: "A Negative (A-)", path: "/blood-groups/a-negative" },
     { name: "B Positive (B+)", path: "/blood-groups/b-positive" },
-    { name: "B Negetive (B-)", path: "/blood-groups/b-negative" },
+    { name: "B Negative (B-)", path: "/blood-groups/b-negative" },
     { name: "O Positive (O+)", path: "/blood-groups/o-positive" },
-    { name: "O Negetive (O-)", path: "/blood-groups/o-negative" },
+    { name: "O Negative (O-)", path: "/blood-groups/o-negative" },
     { name: "AB Positive (AB+)", path: "/blood-groups/ab-positive" },
-    { name: "AB Negetive (AB-)", path: "/blood-groups/ab-negative" }
+    { name: "AB Negative (AB-)", path: "/blood-groups/ab-negative" }
 ];
-
-
 
 
 const Header = () => {
@@ -44,7 +42,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <Link to="/">
-                            <img src={logo} alt="The Dreamers" className="w-15 h-auto" />
+                            <img src={logo} alt="The Dreamers" className="w-16 h-auto" />
                         </Link>
                     </div>
 
@@ -65,13 +63,13 @@ const Header = () => {
 
                         {/* Branches Dropdown */}
                         <div className="relative">
-                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">
+                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">
                                 Branches
                             </button>
                             {isBranchesOpen && (
-                                <div className="absolute left-0 mt-2 w-48 bg-white shadow-md rounded-lg z-10" onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)}>
+                                <div className="absolute left-0 mt-2 w-48 bg-white shadow-md shadow-green-500 z-10" onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)}>
                                     {branches.map((branch) => (
-                                        <Link key={branch.path} to={branch.path} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                        <Link key={branch.path} to={branch.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                             {branch.name}
                                         </Link>
                                     ))}
@@ -84,18 +82,18 @@ const Header = () => {
                             <button
                                 onMouseEnter={() => setIsBloodGroupsOpen(true)}
                                 onMouseLeave={() => setIsBloodGroupsOpen(false)}
-                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full"
+                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-500 hover:after:w-full"
                             >
                                 Blood Groups
                             </button>
                             {isBloodGroupsOpen && (
                                 <div
-                                    className="absolute left-0 mt-2 w-48 bg-white shadow-md rounded-lg z-10"
+                                    className="absolute left-0 mt-2 w-48 bg-white shadow-md shadow-green-500 z-10"
                                     onMouseEnter={() => setIsBloodGroupsOpen(true)}
                                     onMouseLeave={() => setIsBloodGroupsOpen(false)}
                                 >
                                     {bloodGroups.map((group) => (
-                                        <Link key={group.path} to={group.path} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                        <Link key={group.path} to={group.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                             {group.name}
                                         </Link>
                                     ))}
@@ -103,8 +101,8 @@ const Header = () => {
                             )}
                         </div>
 
-                        <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
-                        <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
+                        <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
+                        <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
 
                     </nav>
 
@@ -117,23 +115,23 @@ const Header = () => {
             </div>
 
             {/* Mobile Navigation */}
-            <div className={`fixed  right-0 h-max w-1/2 bg-gray-800 p-4 z-10 rounded-lg transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
-                <nav className="space-y-4">
-                    <Link to="/" className="block text-white hover:text-indigo-300">Home</Link>
-                    <Link to="/blogs" className="block text-white hover:text-indigo-300">Blogs</Link>
-                    <Link to="/events" className="block text-white hover:text-indigo-300">Events</Link>
-                    <Link to="/about" className="block text-white hover:text-indigo-300">About Us</Link>
-                    <Link to="/contact" className="block text-white hover:text-indigo-300">Contact Us</Link>
+            <div className={`fixed  right-0 h-max w-1/2 bg-white p-4 z-10 shadow-xl shadow-green-800 transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
+                <nav className="space-y-4 text-black">
+                    <Link to="/" className="block text-green-900 hover:text-green-500">Home</Link>
+                    <Link to="/blogs" className="block text-green-900 hover:text-green-500">Blogs</Link>
+                    <Link to="/events" className="block text-green-900 hover:text-green-500">Events</Link>
+                    <Link to="/about" className="block text-green-900 hover:text-green-500">About Us</Link>
+                    <Link to="/contact" className="block text-green-900 hover:text-green-500">Contact Us</Link>
 
                     {/* Mobile Branches Dropdown */}
                     <div>
-                        <button onClick={() => setIsBranchesOpen(!isBranchesOpen)} className="text-white hover:text-indigo-300 w-full text-left">
+                        <button onClick={() => setIsBranchesOpen(!isBranchesOpen)} className="text-green-900 hover:text-green-500 w-full text-left">
                             Branches
                         </button>
                         {isBranchesOpen && (
-                            <div className="mt-2 bg-gray-700 rounded-lg">
+                            <div className="mt-2 bg-white shadow-lg shadow-green-600 rounded-lg">
                                 {branches.map((branch) => (
-                                    <Link key={branch.path} to={branch.path} className="block px-4 py-2 text-white hover:bg-gray-600">
+                                    <Link key={branch.path} to={branch.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                         {branch.name}
                                     </Link>
                                 ))}
@@ -144,20 +142,19 @@ const Header = () => {
 
                     {/* Mobile Blood Groups Dropdown */}
                     <div>
-                        <button onClick={() => setIsBloodGroupsOpen(!isBloodGroupsOpen)} className="text-white hover:text-indigo-300 w-full text-left">
+                        <button onClick={() => setIsBloodGroupsOpen(!isBloodGroupsOpen)} className="text-green-900 hover:text-green-500 w-full text-left">
                             Blood Groups
                         </button>
                         {isBloodGroupsOpen && (
-                            <div className="mt-2 bg-gray-700 rounded-lg">
+                            <div className="mt-2 bg-white shadow-lg shadow-green-600 rounded-lg">
                                 {bloodGroups.map((group) => (
-                                    <Link key={group.path} to={group.path} className="block px-4 py-2 text-white hover:bg-gray-600">
+                                    <Link key={group.path} to={group.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                         {group.name}
                                     </Link>
                                 ))}
                             </div>
                         )}
                     </div>
-
 
 
                     <div className="mt-4 space-x-4">
