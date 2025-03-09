@@ -4,6 +4,7 @@ import BloodGroupPage from "../BloodGroups/BloodGroup";
 import bcamp from "../../assets/Blood/blood 4.jpg";
 import baward from "../../assets/Blood/blood 3.jpg";
 import bbaward from "../../assets/Blood/blood 1.jpg";
+import aslam from "../../assets/Blood/Aslam.jpg";;
 
 {/*Activities Data*/ }
 const bloodBankActivities = [
@@ -31,10 +32,10 @@ const bloodBankActivities = [
 
 {/*President Data*/ }
 const president = {
-    name: "Nazmul Hossain",
-    image: "/images/president1.jpg",
+    name: "Aslam Hossain",
+    image: [aslam],
     profession: "Social Worker",
-    education: "MSc in Social Science",
+    education: "B.A. (Hons) in History",
     quote: "Together we make a difference.",
     mission: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dignissimos in modi explicabo! Sit, fugit nostrum, rerum doloremque voluptates non doloribus, itaque officiis ab ea vel illo. Suscipit, aliquam similique."
 };
@@ -186,7 +187,7 @@ const BloodBankPage = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-4 md:p-6 ">
-            <h1 className="text-2xl md:text-4xl font-bold text-center p-5 rounded-lg mb-6 bg-[#078d83] text-red-800">Blood Bank</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-center p-5 rounded-lg mb-6 bg-[#078d83] text-red-800">THE DREAMERS BLOOD BANK</h1>
             <div className="flex flex-col md:flex-row gap-4">
                 <Sidebar setActiveSection={setActiveSection} />
                 <MainContent activeSection={activeSection} />
