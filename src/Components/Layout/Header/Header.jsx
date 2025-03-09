@@ -37,7 +37,7 @@ const Header = () => {
 
     return (
         <header className="bg-white sticky top-0 shadow-lg shadow-green-800 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 md:py-2 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <div className="flex items-center">
@@ -56,9 +56,11 @@ const Header = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex space-x-8 relative">
+                    <nav className="hidden md:flex space-x-8 relative px-1">
                         <Link to="/" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Home</Link>
-                        <Link to="/blogs" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Blogs</Link>
+
+                        {/* <Link to="/blogs" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Blogs</Link> */}
+                        
                         <Link to="/events" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Events</Link>
 
                         {/* Branches Dropdown */}
@@ -109,8 +111,10 @@ const Header = () => {
 
                     {/* Action Buttons */}
                     <div className="hidden md:flex space-x-4">
-                        <button className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg">Donate</button>
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Join Us</button>
+                        <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white py-2 px-4 rounded-lg">
+                            Donate
+                        </button>
+                        <button className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
                     </div>
                 </div>
             </div>
@@ -158,9 +162,11 @@ const Header = () => {
                     </div> */}
 
 
+                    {/* Action Buttons */}
                     <div classNamen="mt-4 space-x-4">
-                        <button className="bg-green-500 my-2 hover:bg-green-600 text-white py-2 px-4 rounded-lg w-full text-center">Donate</button>
-                        <button className="bg-blue-500 my-2 hover:bg-blue-600 text-white py-2 px-4 rounded-lg w-full text-center">Join Us</button>
+                        <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white my-2 py-2 px-4 rounded-lg w-full text-center"> Donate</button>
+
+                        <button className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white my-2 py-2 px-4 rounded-lg w-full text-center">Join Us</button>
                     </div>
                 </nav>
             </div>
