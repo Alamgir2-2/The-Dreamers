@@ -202,8 +202,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Search, X, Phone, MapPin, School, Heart } from "lucide-react"; // Importing icons
 
-const BloodGroupPage = () => {
-    const { bloodGroup } = useParams();
+const BloodGroupPage = ({bloodGroup}) => {
+    // const { bloodGroup } = useParams();
     const [searchTerm, setSearchTerm] = useState("");
 
     const donorsData = {
@@ -235,7 +235,7 @@ const BloodGroupPage = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-10">
-                    <h1 className="text-5xl font-bold text-red-600 dark:text-red-400 capitalize mb-3">
+                    <h1 className="text-3xl font-bold text-red-600 dark:text-red-400 capitalize mb-3">
                         {bloodGroup.replace("-", " ")} Blood Donors
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 text-lg">
@@ -247,7 +247,7 @@ const BloodGroupPage = () => {
                 <div className="relative mb-10 max-w-md mx-auto">
                     <input
                         type="text"
-                        placeholder="Search by name, phone, address..."
+                        placeholder="Search Donor..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full p-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 pl-12 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 transition-all duration-300 placeholder:italic"
@@ -271,7 +271,7 @@ const BloodGroupPage = () => {
                                 key={donor.id}
                                 className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeIn"
                             >
-                                <div className="p-6">
+                                <div className="p-4">
                                     <div className="flex items-center justify-between mb-4">
                                         <img
                                             src={donor.image}
@@ -282,24 +282,24 @@ const BloodGroupPage = () => {
                                             {bloodGroup.toUpperCase()}
                                         </span>
                                     </div>
-                                    <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                                    <h2 className="font-bold text-gray-800 dark:text-gray-100 mb-2">
                                         {donor.name}
                                     </h2>
-                                    <div className="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <div className="text-sm space-y-2 text-gray-600 dark:text-gray-300">
                                         <p className="flex items-center gap-2">
-                                            <Phone size={16} /> {donor.phone}
+                                            <Phone size={12} /> {donor.phone}
                                         </p>
                                         <p className="flex items-center gap-2">
-                                            <MapPin size={16} /> {donor.address}
+                                            <MapPin size={12} /> {donor.address}
                                         </p>
                                         <p className="flex items-center gap-2">
-                                            <School size={16} /> {donor.institute}
+                                            <School size={12} /> {donor.institute}
                                         </p>
                                     </div>
                                 </div>
-                                <div className="border-t border-gray-100 dark:border-gray-700 p-4 flex justify-end">
+                                <div className="border-t border-gray-100 dark:border-gray-700 p-2 flex justify-end">
                                     <button className="flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-500 transition-all duration-300">
-                                        <Heart size={18} /> Thank Donor
+                                        <Heart size={12} /> Thank Donor
                                     </button>
                                 </div>
                             </div>

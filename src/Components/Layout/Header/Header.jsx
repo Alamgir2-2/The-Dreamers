@@ -13,16 +13,16 @@ const branches = [
     { name: "Centrally controlled", path: "/branches/8" }
 ];
 
-const bloodGroups = [
-    { name: "A Positive (A+) ", path: "/blood-groups/a-positive" },
-    { name: "A Negative (A-)", path: "/blood-groups/a-negative" },
-    { name: "B Positive (B+)", path: "/blood-groups/b-positive" },
-    { name: "B Negative (B-)", path: "/blood-groups/b-negative" },
-    { name: "O Positive (O+)", path: "/blood-groups/o-positive" },
-    { name: "O Negative (O-)", path: "/blood-groups/o-negative" },
-    { name: "AB Positive (AB+)", path: "/blood-groups/ab-positive" },
-    { name: "AB Negative (AB-)", path: "/blood-groups/ab-negative" }
-];
+// const bloodGroups = [
+//     { name: "A Positive (A+) ", path: "/blood-groups/a-positive" },
+//     { name: "A Negative (A-)", path: "/blood-groups/a-negative" },
+//     { name: "B Positive (B+)", path: "/blood-groups/b-positive" },
+//     { name: "B Negative (B-)", path: "/blood-groups/b-negative" },
+//     { name: "O Positive (O+)", path: "/blood-groups/o-positive" },
+//     { name: "O Negative (O-)", path: "/blood-groups/o-negative" },
+//     { name: "AB Positive (AB+)", path: "/blood-groups/ab-positive" },
+//     { name: "AB Negative (AB-)", path: "/blood-groups/ab-negative" }
+// ];
 
 
 const Header = () => {
@@ -78,7 +78,7 @@ const Header = () => {
                         </div>
 
                         {/* Blood Groups Dropdown */}
-                        <div className="relative">
+                        {/* <div className="relative">
                             <button
                                 onMouseEnter={() => setIsBloodGroupsOpen(true)}
                                 onMouseLeave={() => setIsBloodGroupsOpen(false)}
@@ -99,10 +99,11 @@ const Header = () => {
                                     ))}
                                 </div>
                             )}
-                        </div>
+                        </div> */}
 
                         <Link to="/about" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">About Us</Link>
                         <Link to="/contact" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Contact Us</Link>
+                        <Link to="/blood" className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">Blood Bank</Link>
 
                     </nav>
 
@@ -141,7 +142,7 @@ const Header = () => {
 
 
                     {/* Mobile Blood Groups Dropdown */}
-                    <div>
+                    {/* <div>
                         <button onClick={() => setIsBloodGroupsOpen(!isBloodGroupsOpen)} className="text-green-900 hover:text-green-500 w-full text-left">
                             Blood Groups
                         </button>
@@ -154,7 +155,7 @@ const Header = () => {
                                 ))}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
 
                     <div classNamen="mt-4 space-x-4">
