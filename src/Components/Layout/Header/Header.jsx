@@ -36,7 +36,7 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-white sticky top-0 shadow-md shadow-green-800 z-50">
+        <header className="bg-white sticky top-0 shadow-lg shadow-green-800 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -157,7 +157,7 @@ const Header = () => {
                     </div>
 
 
-                    <div className="mt-4 space-x-4">
+                    <div classNamen="mt-4 space-x-4">
                         <button className="bg-green-500 my-2 hover:bg-green-600 text-white py-2 px-4 rounded-lg w-full text-center">Donate</button>
                         <button className="bg-blue-500 my-2 hover:bg-blue-600 text-white py-2 px-4 rounded-lg w-full text-center">Join Us</button>
                     </div>
