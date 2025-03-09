@@ -1,6 +1,43 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import BloodGroupPage from "../BloodGroups/BloodGroup";
+import bcamp from "../../assets/Blood/blood 4.jpg";
+import baward from "../../assets/Blood/blood 3.jpg";
+import bbaward from "../../assets/Blood/blood 1.jpg";
+
+{/*Activities Data*/ }
+const bloodBankActivities = [
+    {
+        title: "Blood Donation Campaign",
+        description: ' "THE DREAMERS BLOOD BANK" organize impactful blood donation campaigns to bring our community together for a noble cause. Our mission is to encourage people to donate blood, save lives, and raise awareness about the critical need for donations. Through our efforts, we aim to make a meaningful difference and ensure that life-saving blood is always available for those in need.',
+        image: [bcamp],
+    },
+    {
+        title: "Blood Donor Awards",
+        description: "we are proud to organize the Blood Donor Awards to recognize the selfless individuals who contribute their blood to save lives. This event highlights the importance of understanding blood types and the crucial role donation plays in emergency situations.",
+        image: [baward],
+    },
+    {
+        title: "Volunteer for Blood Bank",
+        description: "Become a volunteer to help organize and manage blood donations at our blood bank. Together, we can save more lives.",
+        image: [bbaward],
+    },
+    {
+        title: "Blood Donation Registration",
+        description: "Sign up to donate blood and be a part of our ongoing efforts to provide safe blood to those in need.",
+        image: "/images/registration.jpg",
+    },
+];
+
+{/*President Data*/ }
+const president = {
+    name: "Nazmul Hossain",
+    image: "/images/president1.jpg",
+    profession: "Social Worker",
+    education: "MSc in Social Science",
+    quote: "Together we make a difference.",
+    mission: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dignissimos in modi explicabo! Sit, fugit nostrum, rerum doloremque voluptates non doloribus, itaque officiis ab ea vel illo. Suscipit, aliquam similique."
+};
 
 {/*Member Data*/ }
 const membersData = [
@@ -54,6 +91,8 @@ const Sidebar = ({ setActiveSection }) => {
     );
 };
 
+
+{/* Main Content Area*/}
 const MainContent = ({ activeSection }) => {
     const bloodGroupsPaths = [
         "a-positive", "a-negative", "b-positive", "b-negative",
@@ -70,22 +109,41 @@ const MainContent = ({ activeSection }) => {
 
     return (
         <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-green-300">
-            {activeSection === "activities" && <h3 className="text-xl font-semibold text-green-700">Branch Activities</h3>}
-            {activeSection === "president" && <h3 className="text-xl font-semibold text-green-700">Branch President</h3>}
 
-            {/* {activeSection === "members" && (
+            {/* Activities Section */}
+            {activeSection === "activities" && (
                 <div>
-                    <h3 className="text-xl font-semibold text-green-700">Branch Members</h3>
-                    <ul className="mt-2">
-                        {membersData.map((member) => (
-                            <li key={member.id} className="p-2 border-b border-gray-300">
-                                <strong>{member.name}</strong> - {member.role} - <span className="text-blue-500">{member.contact}</span>
-                            </li>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-700">Blood Bank Activities</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {bloodBankActivities.map((activity, index) => (
+                            <div key={index} className="bg-gray-50 p-4 shadow-md rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-fadeIn">
+                                <img src={activity.image} alt={activity.title} className="w-full h-40 object-cover rounded-md" />
+                                <h4 className="font-bold mt-2 text-lg">{activity.title}</h4>
+                                <p className="text-gray-600 text-justify">{activity.description}</p>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
-            )} */}
+            )}
 
+            {/* President Section */}
+            {activeSection === "president" && (
+                <div>
+                    <h3 className="text-xl font-semibold text-green-700">Blood Bank President</h3>
+                    <div className="flex flex-col md:flex-col items-center mt-4">
+                        <img src={president.image} alt={president.name} className="w-32 h-32 object-cover rounded-full border-4 border-[#078d83]" />
+                        <div className="ml-6">
+                            <h4 className="font-bold text-2xl text-[#078d83]">{president.name}</h4>
+                            <p className="text-gray-600 text-lg"><span className="font-bold">Profession: </span> {president.profession}</p>
+                            <p className="text-gray-600 text-lg"><span className="font-bold">Education: </span> {president.education}</p>
+                            <blockquote className="mt-2 italic text-gray-600"><span className="font-bold">Quotes: </span>"{president.quote}"</blockquote>
+                            <p className="mt-4 text-gray-700"><span className="font-bold">Mission: </span>{president.mission}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/*Member Section*/}
             {activeSection === "members" && (
                 <div>
                     <input
