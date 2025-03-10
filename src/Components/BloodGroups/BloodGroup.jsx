@@ -174,13 +174,13 @@ const BloodGroupPage = ({ bloodGroup }) => {
                         ))}
                     </div>
                 ) : (
-                    <div className="flex flex-col items-center justify-center py-20">
+                    <div className="flex flex-col items-center justify-center -mt-6">
                         <img
                             src={noData}
-                            alt="No Results"
-                            className="w-48"
+                            alt="No Data Found"
+                            className="w-75"
                         />
-                        <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg">
+                        <p className=" text-gray-500 dark:text-gray-400 text-lg">
                             No donors found. Try again...
                         </p>
                     </div>
