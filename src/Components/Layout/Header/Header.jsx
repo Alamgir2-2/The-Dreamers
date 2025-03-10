@@ -29,11 +29,23 @@ const branches = [
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isBranchesOpen, setIsBranchesOpen] = useState(false);
-    const [isBloodGroupsOpen, setIsBloodGroupsOpen] = useState(false);
-
+    // const [isBloodGroupsOpen, setIsBloodGroupsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    let timeoutId;
+
+    const handleMouseEnter = () => {
+        clearTimeout(timeoutId);
+        setIsBranchesOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        timeoutId = setTimeout(() => {
+            setIsBranchesOpen(false);
+        }, 200); // 300ms delay
     };
 
     return (
@@ -66,12 +78,20 @@ const Header = () => {
 
                         {/* Branches Dropdown */}
                         <div className="relative">
-                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1">
-                                Branches<FaChevronDown size={10} className={`transition-transform mt-1.5 duration-300 ${isBranchesOpen ? 'rotate-180' : ''}`} />
-
+                            <button
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+                            >
+                                Branches
+                                <FaChevronDown size={10} className={`transition-transform mt-1.5 duration-300 ${isBranchesOpen ? 'rotate-180' : ''}`} />
                             </button>
                             {isBranchesOpen && (
-                                <div className="absolute left-0 mt-2 w-48 bg-white shadow-md shadow-green-500 z-10" onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)}>
+                                <div
+                                    className="absolute left-0 mt-2 w-48 bg-white shadow-md shadow-green-500 z-10"
+                                    onMouseEnter={handleMouseEnter}
+                                    onMouseLeave={handleMouseLeave}
+                                >
                                     {branches.map((branch) => (
                                         <Link key={branch.path} to={branch.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                             {branch.name}
@@ -167,7 +187,7 @@ const Header = () => {
 
 
                     {/* Action Buttons */}
-                    <div classNamen="mt-4 space-x-4">
+                    <div className="mt-4 space-x-4">
                         <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white my-2 py-2 px-4 rounded-lg w-full text-center"> Donate</button>
 
                         <button className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white my-2 py-2 px-4 rounded-lg w-full text-center">Join Us</button>
