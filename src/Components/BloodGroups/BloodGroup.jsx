@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Search, X, Phone, MapPin, School, Heart } from "lucide-react";
+import alamgir from "../../assets/Blood/alamgir.jpg";
+import shadikul from "../../assets/Blood/Shadikul.jpg";
+import noData from "../../assets/Blood/Data.png";
 
 const BloodGroupPage = ({ bloodGroup }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -25,7 +28,7 @@ const BloodGroupPage = ({ bloodGroup }) => {
                 phone: "+1234567890",
                 address: "Apon Mor, Jashore",
                 institute: "Govt. M M College, Jashore",
-                image: "https://via.placeholder.com/100",
+                image: [shadikul],
                 lastDonation: "2024-02-12" 
             },
             {
@@ -34,7 +37,18 @@ const BloodGroupPage = ({ bloodGroup }) => {
                 phone: "+8801319602545",
                 address: "Kulbaria, Maheshpur, Jhenaidah",
                 institute: "NSTU",
-                image: "https://via.placeholder.com/100",
+                image: [alamgir],
+                lastDonation: "2025-02-20" 
+            }
+        ],
+        "b-positive": [
+            {
+                id: 2,
+                name: "Md Alamgir Hossain",
+                phone: "+8801319602545",
+                address: "Kulbaria, Maheshpur, Jhenaidah",
+                institute: "NSTU",
+                image: [alamgir],
                 lastDonation: "2025-02-20" 
             }
         ],
@@ -162,12 +176,12 @@ const BloodGroupPage = ({ bloodGroup }) => {
                 ) : (
                     <div className="flex flex-col items-center justify-center py-20">
                         <img
-                            src="https://illustrations.popsy.co/gray/searching.svg"
+                            src={noData}
                             alt="No Results"
                             className="w-48"
                         />
                         <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg">
-                            No donors found. Try a different search term.
+                            No donors found. Try again...
                         </p>
                     </div>
                 )}
