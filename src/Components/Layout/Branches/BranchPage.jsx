@@ -4,6 +4,8 @@ import tree1 from "../../../assets/Blood/tree 1.jpg";
 import tree2 from "../../../assets/Blood/tree 2.jpg";
 import blood5 from "../../../assets/Blood/blood 5.jpg";
 import blood6 from "../../../assets/Blood/blood 6.jpg";
+import noData from "../../../assets/Blood/Data.png";
+
 
 const branchData = {
     1: {
@@ -139,7 +141,16 @@ const BranchPage = () => {
     const [activeSection, setActiveSection] = useState("activities");
 
     if (!branch) {
-        return <div className="text-center bg-amber-300 p-8 mx-10 my-10 text-red-500 rounded-lg">Branch Details not found.</div>;
+        return <div className="flex flex-col items-center justify-center mt-6">
+            <img
+                src={noData}
+                alt="No Data Found"
+                className="w-75"
+            />
+            <p className="my-3 text-gray-500 dark:text-gray-400 text-lg">
+                No Branch details found. Try again...
+            </p>
+        </div>;
     }
 
     return (
