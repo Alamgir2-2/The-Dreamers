@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaChevronDown } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
 
 const branches = [
@@ -65,8 +66,9 @@ const Header = () => {
 
                         {/* Branches Dropdown */}
                         <div className="relative">
-                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full">
-                                Branches
+                            <button onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)} className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px]  after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1">
+                                Branches<FaChevronDown size={10} className={`transition-transform mt-1.5 duration-300 ${isBranchesOpen ? 'rotate-180' : ''}`} />
+
                             </button>
                             {isBranchesOpen && (
                                 <div className="absolute left-0 mt-2 w-48 bg-white shadow-md shadow-green-500 z-10" onMouseEnter={() => setIsBranchesOpen(true)} onMouseLeave={() => setIsBranchesOpen(false)}>
