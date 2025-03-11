@@ -184,6 +184,16 @@ const CareerSeminars = () => {
             schedule: "10:00 AM - 12:00 PM",
             location: "Alhaz Mofiz Uddin Academy"
         },
+        {
+            id: 3,
+            title: "Career Pathway After SSC",
+            date: "2023-01-20",
+            image: semi,
+            details: "The Dreamers Team went Alhaz Mofiz Uddin Academy to meet the student of this school and organize a career guideline seminar title 'Career Pathway After SSC'...",
+            speaker: "Yeasin Arafat",
+            schedule: "10:00 AM - 12:00 PM",
+            location: "Jinnahnagar Secondary School"
+        },
         // Add more seminars here
     ];
 
@@ -197,12 +207,48 @@ const CareerSeminars = () => {
             speaker: "Dr. Mahfuzur Rahman",
             schedule: "9:00 AM - 5:00 PM",
         },
+        {
+            id: 2,
+            year: "2023",
+            title: "The Dreamers Annual Conference 2023",
+            image: semi,
+            details: ".",
+            speaker: "Dr. Nadim Parvez Emon",
+            schedule: "9:00 AM - 5:00 PM",
+        },
+        {
+            id: 3,
+            year: "2022",
+            title: "The Dreamers Annual Conference 2022",
+            image: semi,
+            details: ".",
+            speaker: "Dr. Nadim Parvez Emon",
+            schedule: "9:00 AM - 5:00 PM",
+        },
         // Add more conferences here
     ];
 
     const competitions = [
         {
             id: 1,
+            title: "General Knowledge Competition 2024",
+            date: "2024-12-10",
+            image: semi,
+            details: "Test your knowledge and win exciting prizes...",
+            prize: "Crest",
+            rules: "Students of class 8-10",
+        },
+        {
+            id: 2,
+            title: "General Knowledge Competition 2024",
+            date: "2024-12-10",
+            image: semi,
+            details: "Test your knowledge and win exciting prizes...",
+            prize: "Crest",
+            rules: "Students of class 8-10",
+        },
+        {
+            id: 3,
             title: "General Knowledge Competition 2024",
             date: "2024-12-10",
             image: semi,
