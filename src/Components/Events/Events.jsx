@@ -109,10 +109,10 @@ const Modal = ({ isOpen, onClose, type, selectedEvent }) => {
 
     return (
         <div className="fixed inset-0 flex justify-center items-center z-50 modal-overlay backdrop-filter backdrop-blur-sm" onClick={onClose}>
-            <div className="bg-white p-8 rounded-lg w-11/12 md:w-1/2 lg:w-1/3 transform transition-all duration-300 ease-in-out shadow-2xl overflow-y-auto max-h-[70vh]" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white p-8 rounded-lg w-11/12 md:w-1/2 lg:w-1/2 transform transition-all duration-300 ease-in-out shadow-2xl shadow-green-500 overflow-y-auto max-h-[70vh]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex justify-between items-center mb-6 bg-green-400 rounded-lg p-2">
                     <h2 className="text-2xl font-bold">{selectedEvent?.title}</h2>
-                    <button onClick={onClose} className="text-red-700 hover:text-gray-900">
+                    <button onClick={onClose} className="text-green-900 hover:text-red-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -166,21 +166,21 @@ const CareerSeminars = () => {
     const seminars = [
         {
             id: 1,
-            title: "Career in Software Engineering",
-            date: "2023-10-15",
+            title: "Career Pathway After SSC",
+            date: "2025-01-20",
             image: semi,
-            details: "Learn about the latest trends in software engineering...",
-            speaker: "John Doe",
-            schedule: "10:00 AM - 12:00 PM",
+            details: "The Dreamers Team went Samonta Secondary School to meet the student of this school and organize a career guideline seminar title 'Career Pathway After SSC'...",
+            speaker: "Saklain Mustak",
+            schedule: "12:00 PM - 2:00 PM",
             location: "Samonta Secondary School"
         },
         {
             id: 2,
-            title: "Career in Software Engineering",
-            date: "2023-10-15",
+            title: "Career Pathway After SSC",
+            date: "2025-01-20",
             image: semi,
-            details: "Learn about the latest trends in software engineering...",
-            speaker: "John Doe",
+            details: "The Dreamers Team went Alhaz Mofiz Uddin Academy to meet the student of this school and organize a career guideline seminar title 'Career Pathway After SSC'...",
+            speaker: "Saklain Mustak",
             schedule: "10:00 AM - 12:00 PM",
             location: "Alhaz Mofiz Uddin Academy"
         },
@@ -190,11 +190,11 @@ const CareerSeminars = () => {
     const conferences = [
         {
             id: 1,
-            year: "2023",
-            title: "Annual Tech Conference 2023",
+            year: "2024",
+            title: "The Dreamers Annual Conference 2024",
             image: semi,
             details: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore odio tempore est veniam, aperiam ratione quo blanditiis voluptatibus nemo pariatur, consectetur illo repellat ab adipisci culpa nobis eum. Ducimus ipsa temporibus vitae sint alias perspiciatis amet ullam rerum repudiandae ab necessitatibus corporis veniam nobis suscipit, obcaecati dicta eveniet neque dignissimos. Itaque ipsam illo quia suscipit neque veniam voluptate totam doloribus sunt repudiandae, ratione accusantium eius alias sequi dolorum necessitatibus voluptas et, temporibus excepturi, saepe cum magni! Dignissimos praesentium, vel veniam vitae consequuntur maxime doloribus, officiis similique accusantium eos tempora. Quidem ducimus sint a ex itaque! Placeat saepe doloribus facere odio maxime, ipsam laborum iste vero eveniet nam sint in explicabo fugit! Asperiores eligendi cum illum a fugit. Saepe, eveniet! Quod sed fuga quidem eaque iusto omnis quasi vero dignissimos magni provident asperiores amet molestias rem, magnam, ut, corporis veritatis cum dolorum eos maiores similique optio numquam praesentium aut! Eius rerum ullam at a magni voluptates eligendi ratione voluptatibus voluptatem eos alias provident, accusamus consectetur corporis odit, nulla sint, tenetur quos accusantium atque laborum dolorum dignissimos adipisci. Cumque veniam saepe nulla ullam sunt soluta a possimus? Reprehenderit dolorem deleniti suscipit laborum quis magni aut error est placeat fuga facilis sed voluptatem accusantium, adipisci modi. Magni dolorum possimus harum rem et neque repellendus cumque id adipisci nisi? Autem, reiciendis qui in sed distinctio ipsa temporibus perspiciatis, sint quam eos nobis explicabo sequi maxime itaque nemo velit blanditiis assumenda tempora repudiandae, animi iusto. Ea dolor deleniti placeat quidem tempore totam explicabo porro reiciendis quia vel! Dignissimos fuga iste alias exercitationem nesciunt ut! Quibusdam natus obcaecati accusamus delectus, similique praesentium dolores omnis necessitatibus assumenda corrupti cupiditate, alias, mollitia reiciendis quasi aut! Vel sed, explicabo ex iure vero similique tempore porro eveniet. Unde voluptates doloribus eligendi, vero molestias, perspiciatis possimus tempore labore explicabo ab facere.",
-            speaker: "Dr. Alan Turing",
+            speaker: "Dr. Mahfuzur Rahman",
             schedule: "9:00 AM - 5:00 PM",
         },
         // Add more conferences here
@@ -203,12 +203,12 @@ const CareerSeminars = () => {
     const competitions = [
         {
             id: 1,
-            title: "General Knowledge Competition 2023",
-            date: "2023-12-10",
+            title: "General Knowledge Competition 2024",
+            date: "2024-12-10",
             image: semi,
             details: "Test your knowledge and win exciting prizes...",
-            prize: "৳ 50,000",
-            rules: "No age limit. Participants must register online.",
+            prize: "Crest",
+            rules: "Students of class 8-10",
         },
         // Add more competitions here
     ];
