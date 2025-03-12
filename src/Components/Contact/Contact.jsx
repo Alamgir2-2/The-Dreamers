@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaFacebookMessenger, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa'; 
+import { FaFacebookMessenger, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 const ContactUs = () => {
     const [isSubmitted, setIsSubmitted] = useState(false); // Form Submit
     const [formData, setFormData] = useState({
@@ -26,13 +26,15 @@ const ContactUs = () => {
     };
 
     return (
-        <div className="bg-gray-50 min-h-screen py-12">
-            <div className="container mx-auto px-4">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-blue-900 mb-4">Contact Us</h1>
-                    <p className="text-xl text-gray-600">We'd love to hear from you! Reach out to us for any inquiries or feedback.</p>
-                </div>
+        <div className=" min-h-screen py-12">
+
+            {/* Header */}
+            <div className="bg-blue-50 py-20 -mt-12 text-center mb-12">
+                <h1 className="text-5xl font-bold text-[#078d83] mb-4">Contact Us</h1>
+                <p className="text-xl text-gray-600">We'd love to hear from you! Reach out to us for any inquiries or feedback.</p>
+            </div>
+
+            <div className="container mx-auto px-10">
 
                 {/* Contact Info Form */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -137,7 +139,7 @@ const ContactUs = () => {
 
                         {/* //Social Media contact */}
                         <div className="mt-6 w-auto">
-                            <h3 className="text-xl font-bold mb-4">Connect Us With</h3>
+                            <h3 className="text-xl font-bold mb-4">Connect with Us</h3>
                             <div className="flex space-x-4">
 
                                 {/* Facebook Messenger */}
@@ -145,7 +147,7 @@ const ContactUs = () => {
                                     href="https://m.me/WeTheDreamersbd"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                                    className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                                     title="Message us on Facebook"
                                 >
                                     <FaFacebookMessenger className="text-xl" />
@@ -156,7 +158,7 @@ const ContactUs = () => {
                                     href="https://wa.me/your-whatsapp-number"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                                    className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                                     title="Message us on WhatsApp"
                                 >
                                     <FaWhatsapp className="text-xl" />
@@ -167,7 +169,7 @@ const ContactUs = () => {
                                     href="https://t.me/your-telegram-username"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="bg-blue-400 text-white p-4 rounded-lg hover:bg-blue-500 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                                    className="bg-blue-400 text-white p-2 rounded-lg hover:bg-blue-500 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                                     title="Message us on Telegram"
                                 >
                                     <FaTelegramPlane className="text-xl" />
