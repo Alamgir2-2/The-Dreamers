@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BloodGroupPage from "../BloodGroups/BloodGroup";
 import bcamp from "../../assets/Blood/blood 4.jpg";
 import baward from "../../assets/Blood/blood 3.jpg";
 import bbaward from "../../assets/Blood/blood 1.jpg";
-import aslam from "../../assets/Blood/Aslam.jpg";;
+import aslam from "../../assets/Blood/Aslam.jpg";
 
-{/*Activities Data*/ }
+{/* Activities Data */ }
 const bloodBankActivities = [
     {
         title: "Blood Donation Campaign",
@@ -30,7 +30,7 @@ const bloodBankActivities = [
     },
 ];
 
-{/*President Data*/ }
+{/* President Data */ }
 const president = {
     name: "Aslam Hossain",
     image: [aslam],
@@ -40,7 +40,7 @@ const president = {
     mission: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dignissimos in modi explicabo! Sit, fugit nostrum, rerum doloremque voluptates non doloribus, itaque officiis ab ea vel illo. Suscipit, aliquam similique."
 };
 
-{/*Member Data*/ }
+{/* Member Data */ }
 const membersData = [
     { id: 1, name: "Asif Khan", age: 22, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member1.jpg", profession: "Student" },
     { id: 2, name: "Ismail Hossain", age: 24, institution: "Shohidul Islam Degree College", bloodGroup: "B+", image: "/images/member2.jpg", profession: "Teacher" }
@@ -59,10 +59,9 @@ const Sidebar = ({ setActiveSection }) => {
         { name: "AB Negative (AB-)", path: "ab-negative" }
     ];
 
-
     return (
         <div className="w-full h-auto md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-green-300 font-bold">
-            <button onClick={() => setActiveSection("activities")} className="w-full mb-2  p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">Activities</button>
+            <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">Activities</button>
 
             {/* Donor Button with Submenu */}
             <div>
@@ -86,14 +85,11 @@ const Sidebar = ({ setActiveSection }) => {
             <button onClick={() => setActiveSection("president")} className="w-full mb-2 p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">President</button>
             <button onClick={() => setActiveSection("members")} className="w-full mb-2 p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">Members</button>
             <button onClick={() => setActiveSection("branchDetails")} className="w-full mb-2 p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">Blood Bank Details</button>
-
-
         </div>
     );
 };
 
-
-{/* Main Content Area*/}
+{/* Main Content Area */ }
 const MainContent = ({ activeSection }) => {
     const bloodGroupsPaths = [
         "a-positive", "a-negative", "b-positive", "b-negative",
@@ -109,8 +105,7 @@ const MainContent = ({ activeSection }) => {
     );
 
     return (
-        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-green-300">
-
+        <div className="w-full md:w-3/4 p-4 md:p-6 bg-white shadow-lg rounded-lg border border-green-300 overflow-y-auto" style={{ maxHeight: "calc(100vh - 200px)" }}>
             {/* Activities Section */}
             {activeSection === "activities" && (
                 <div>
@@ -144,7 +139,7 @@ const MainContent = ({ activeSection }) => {
                 </div>
             )}
 
-            {/*Member Section*/}
+            {/* Member Section */}
             {activeSection === "members" && (
                 <div>
                     <input
@@ -174,7 +169,6 @@ const MainContent = ({ activeSection }) => {
                 </div>
             )}
 
-
             {activeSection === "branchDetails" && <h3 className="text-xl font-semibold text-green-700">Branch Details</h3>}
 
             {bloodGroupsPaths.includes(activeSection) && <BloodGroupPage bloodGroup={activeSection} />}
@@ -186,7 +180,7 @@ const BloodBankPage = () => {
     const [activeSection, setActiveSection] = useState("activities");
 
     return (
-        <div className="max-w-6xl mx-auto p-4 md:p-6 ">
+        <div className="max-w-6xl mx-auto p-4 md:p-6">
             <h1 className="text-2xl md:text-4xl font-bold text-center p-5 rounded-lg mb-6 bg-[#078d83] text-red-800">THE DREAMERS BLOOD BANK</h1>
             <div className="flex flex-col md:flex-row gap-4">
                 <Sidebar setActiveSection={setActiveSection} />
