@@ -50,6 +50,26 @@ const branchData = {
             { title: "Free Health Check-up", description: "Arranged free medical check-up camp.", image: [blood6] },
         ],
     },
+    3: {
+        name: "Maheshpur Branch",
+        location: "Jhinnanagar, Jashore",
+        president: {
+            name: "Mostakim Ahmed",
+            image: "/images/president2.jpg",
+            profession: "Doctor",
+            education: "MBBS, Dhaka Medical College",
+            quote: "Health is wealth.",
+            mission: "Providing free medical services to the needy."
+        },
+        members: [
+            { name: "Tanvir Ahmed", age: 26, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member3.jpg", profession: "Engineer" },
+            { name: "Saklain Mustak", age: 24, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member4.jpg", profession: "Lecturer" },
+        ],
+        activities: [
+            { title: "Tree Plantation", description: "Planted 500 trees in the locality.", image: [tree2] },
+            { title: "Free Health Check-up", description: "Arranged free medical check-up camp.", image: [blood6] },
+        ],
+    },
 };
 
 const Sidebar = ({ setActiveSection }) => {
