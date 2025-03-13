@@ -60,7 +60,7 @@ const Sidebar = ({ setActiveSection }) => {
     ];
 
     return (
-        <div className="w-full h-auto md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-green-300 font-bold">
+        <div className="w-full h-auto md:w-1/4 bg-white p-4 rounded-lg shadow-md border border-green-300 font-bold overflow-y-auto" style={{ maxHeight: "calc(100vh - 200px)" }}>
             <button onClick={() => setActiveSection("activities")} className="w-full mb-2 p-3 bg-[#078d83] text-red-900 rounded-lg hover:bg-[#085a54]">Activities</button>
 
             {/* Donor Button with Submenu */}
@@ -169,7 +169,7 @@ const MainContent = ({ activeSection }) => {
                 </div>
             )}
 
-            {activeSection === "branchDetails" && <h3 className="text-xl font-semibold text-green-700">Branch Details</h3>}
+            {activeSection === "branchDetails" && <h3 className="text-xl font-semibold text-green-700">Blood Bank Details</h3>}
 
             {bloodGroupsPaths.includes(activeSection) && <BloodGroupPage bloodGroup={activeSection} />}
         </div>
@@ -180,8 +180,8 @@ const BloodBankPage = () => {
     const [activeSection, setActiveSection] = useState("activities");
 
     return (
-        <div className="max-w-6xl mx-auto p-4 md:p-6">
-            <h1 className="text-2xl md:text-4xl font-bold text-center p-5 rounded-lg mb-6 bg-[#078d83] text-red-800">THE DREAMERS BLOOD BANK</h1>
+        <div className="max-w-6xl mx-auto -mt-1 p-4 md:p-6">
+            <h1 className="text-2xl md:text-4xl font-bold text-center p-5 rounded-lg mb-3 bg-[#078d83] text-red-800">THE DREAMERS BLOOD BANK</h1>
             <div className="flex flex-col md:flex-row gap-4">
                 <Sidebar setActiveSection={setActiveSection} />
                 <MainContent activeSection={activeSection} />
