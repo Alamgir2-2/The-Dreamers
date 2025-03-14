@@ -8,7 +8,7 @@ import BloodGroupPage from './Components/BloodGroups/BloodGroup'
 import BloodBank from './Components/BloodBank/BloodBank'
 import Events from './Components/Events/Events'
 import Contact from './Components/Contact/Contact'
-import AboutUs from './Components/AboutUs/AboutUs'
+// import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/blood-groups/:bloodGroup" element={<BloodGroupPage></BloodGroupPage>} />
         <Route path="/blood" element={<BloodBank></BloodBank>} />
         <Route path="/events" element={<Events></Events>} />
-        <Route path="/about" element={<AboutUs></AboutUs>} />
+        {/* <Route path="/about" element={<AboutUs></AboutUs>} /> */}
         <Route path="/contact" element={<Contact></Contact>} />
 
       </Routes>
