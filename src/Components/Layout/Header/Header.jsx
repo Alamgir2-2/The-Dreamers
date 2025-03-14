@@ -17,10 +17,10 @@ const branches = [
 const aboutUsLinks = [
     { name: "About The Dreamers", path: "/about/the-dreamers" },
     { name: "Director Speech", path: "/about/director-speech" },
+    { name: "Advisory", path: "/about/advisory" },
     { name: "Members", path: "/about/members" },
     { name: "FAQs", path: "/about/faqs" },
     { name: "Support Us", path: "/about/support-us" },
-    { name: "Advisory", path: "/about/advisory" }
 ];
 
 const Header = () => {
