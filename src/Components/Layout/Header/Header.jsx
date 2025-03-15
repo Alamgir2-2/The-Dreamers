@@ -76,7 +76,7 @@ const Header = () => {
                             <button
                                 onMouseEnter={() => handleMouseEnter(setIsBranchesOpen)}
                                 onMouseLeave={() => handleMouseLeave(setIsBranchesOpen)}
-                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-200 hover:after:w-full flex items-center gap-1"
                             >
                                 Branches
                                 <FaChevronDown size={10} className={`transition-transform mt-1.5 duration-300 ${isBranchesOpen ? 'rotate-180' : ''}`} />
@@ -107,7 +107,7 @@ const Header = () => {
                             <button
                                 onMouseEnter={() => handleMouseEnter(setIsAboutUsOpen)}
                                 onMouseLeave={() => handleMouseLeave(setIsAboutUsOpen)}
-                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+                                className="relative text-black hover:text-green-900 after:content-[''] after:absolute after:left-0 after:bottom-[-2px] after:w-0 after:h-[2px] after:bg-green-500 after:transition-all after:duration-200 hover:after:w-full flex items-center gap-1"
                             >
                                 About Us
                                 <FaChevronDown size={10} className={`transition-transform mt-1.5 duration-300 ${isAboutUsOpen ? 'rotate-180' : ''}`} />

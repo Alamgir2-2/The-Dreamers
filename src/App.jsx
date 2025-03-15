@@ -15,7 +15,7 @@ function App() {
     <div>
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path="/branches/:id" element={<BranchPage></BranchPage>} />
         <Route path="/blood-groups/:bloodGroup" element={<BloodGroupPage></BloodGroupPage>} />
         <Route path="/blood" element={<BloodBank></BloodBank>} />
@@ -23,9 +23,13 @@ function App() {
         {/* <Route path="/about" element={<AboutUs></AboutUs>} /> */}
         <Route path="/contact" element={<Contact></Contact>} />
 
+
+        {/* About Us */}
+        <Route path="/about/advisory" element={<Contact></Contact>} />
+
       </Routes>
       <Footer></Footer>
-     
+
     </div>
   )
 }
