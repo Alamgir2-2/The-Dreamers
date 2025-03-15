@@ -107,7 +107,7 @@ const Advisory = () => {
 
                             {/* Card */}
                             <motion.div
-                                className="bg-white h-full rounded-lg shadow-lg overflow-hidden hover:shadow-gray-500 pt-20 pb-6 px-6 text-center"
+                                className="bg-white h-full border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-gray-500 pt-20 pb-6 px-6 text-center"
                                 initial="offscreen" 
                                 whileInView="onscreen" 
                                 viewport={{ once: true, amount: 0.5 }} 
