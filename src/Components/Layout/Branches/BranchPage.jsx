@@ -10,7 +10,7 @@ import noData from "../../../assets/Blood/Data.png";
 const branchData = {
     1: {
         name: "Samonta Branch",
-        location: "Samonta, Jashore",
+        location: "Samonta",
         president: {
             name: "Nazmul Hossain",
             image: "/images/president1.jpg",
@@ -32,7 +32,7 @@ const branchData = {
     },
     2: {
         name: "Jhinnanagar Branch",
-        location: "Jhinnanagar, Jashore",
+        location: "Jhinnanagar",
         president: {
             name: "Mostakim Ahmed",
             image: "/images/president2.jpg",
@@ -52,12 +52,32 @@ const branchData = {
     },
     3: {
         name: "Maheshpur Branch",
-        location: "Jhinnanagar, Jashore",
+        location: "Maheshpur",
         president: {
             name: "Mostakim Ahmed",
             image: "/images/president2.jpg",
             profession: "Doctor",
             education: "MBBS, Dhaka Medical College",
+            quote: "Health is wealth.",
+            mission: "Providing free medical services to the needy."
+        },
+        members: [
+            { name: "Tanvir Ahmed", age: 26, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member3.jpg", profession: "Engineer" },
+            { name: "Saklain Mustak", age: 24, institution: "City College, Jashore", bloodGroup: "B+", image: "/images/member4.jpg", profession: "Lecturer" },
+        ],
+        activities: [
+            { title: "Tree Plantation", description: "Planted 500 trees in the locality.", image: [tree2] },
+            { title: "Free Health Check-up", description: "Arranged free medical check-up camp.", image: [blood6] },
+        ],
+    },
+    4: {
+        name: "Jhenaidah Branch",
+        location: "Jhenaidah",
+        president: {
+            name: "Shamim Ahmed",
+            image: "/images/president2.jpg",
+            profession: "Student",
+            education: ".....",
             quote: "Health is wealth.",
             mission: "Providing free medical services to the needy."
         },
