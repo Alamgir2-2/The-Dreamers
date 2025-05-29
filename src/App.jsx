@@ -9,6 +9,7 @@ import BloodBank from './Components/BloodBank/BloodBank'
 import Events from './Components/Events/Events'
 import Contact from './Components/Contact/Contact'
 import Advisory from './Components/AboutUs/Advisory'
+import AboutDreamers from './Components/AboutUs/AboutDreamers'
 // import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
         {/* About Us */}
         <Route path="/about/advisory" element={<Advisory></Advisory>} />
+        <Route path="/about/the-dreamers" element={<AboutDreamers></AboutDreamers>} />
 
       </Routes>
       <Footer></Footer>
