@@ -32,17 +32,17 @@ const AboutDreamers = () => {
     ];
 
     const educationWork = [
-        { text: "আর্থিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের সহায়তা", icon: Heart },
-        { text: "বাহ্যিক জ্ঞান অর্জনে উৎসাহ প্রদান", icon: BookOpen },
-        { text: "শিক্ষা ভিত্তিক ইভেন্ট আয়োজন", icon: Sparkles },
-        { text: "কৃতি শিক্ষার্থীদের সংবর্ধনা", icon: Star }
+        { text: "আর্থিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের সহায়তা প্রদান", icon: Heart },
+        { text: "শিক্ষার্থীদের বাহ্যিক জ্ঞান অর্জনে উদ্ধুদ্ধকরণ", icon: BookOpen },
+        { text: "শিক্ষা বিষয়ক প্রতিযোগিতামূলক বিভিন্ন ইভেন্ট পরিচালনা করা", icon: Sparkles },
+        { text: "কৃতি শিক্ষার্থীদের সংবর্ধনা প্রদান", icon: Star }
     ];
 
     const socialWork = [
-        { text: "দারিদ্র্য দূরীকরণ সহায়তা", icon: Heart },
-        { text: "রক্তদান কর্মসূচি", icon: Droplets },
-        { text: "বৃক্ষরোপণ কর্মসূচি", icon: TreePine },
-        { text: "ইতিবাচক সকল কাজে অংশগ্রহণ", icon: Sparkles }
+        { text: "দারিদ্র্যকে সহায়তা প্রদান", icon: Heart },
+        { text: "রক্তদান কর্মসূচি পরিচালনা", icon: Droplets },
+        { text: "বৃক্ষরোপণ কর্মসূচি পরিচালনা", icon: TreePine },
+        { text: "এছাড়াও যেকোনো ইতিবাচক কাজে আমরা নিয়োজিত", icon: Sparkles }
     ];
 
     return (
@@ -57,7 +57,7 @@ const AboutDreamers = () => {
                                 এসো তারুণ্য স্বপ্ন দেখি
                             </span>
                         </h1>
-                        <h2 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                        <h2 className="p-2 text-3xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                             সমাজ সেবার প্রত্যয় রাখি
                         </h2>
                     </div>
@@ -92,16 +92,16 @@ const AboutDreamers = () => {
             </section>
 
             {/* Story Section */}
-            <section className="py-32 px-6 bg-slate-900">
+            <section className="py-12 px-6 bg-slate-900">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl py-2 md:text-6xl font-black mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        <h2 className="text-4xl py-2 md:text-5xl font-black mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                             আমাদের গল্প
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
                     </div>
 
-                    <GradientCard className="p-12">
+                    <GradientCard className="p-8">
                         <div className="space-y-8 text-justify">
                             <div className="flex items-center space-x-4 mb-8">
                                 <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
@@ -110,16 +110,16 @@ const AboutDreamers = () => {
                                 <div className="flex-1 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-30" />
                             </div>
 
-                            <p className="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6">
+                            <p className="text-xl md:text-xl leading-relaxed text-gray-100 mb-6">
                                 ২০১৫ সালের শেষের দিকে কিছু উদ্যমী উচ্চমাধ্যমিক শিক্ষার্থীর স্বপ্ন আর সাহসিকতার সংমিশ্রণে শুরু হয় ‘দ্যা ড্রিমার্স’-এর পথচলা। তারা বিশ্বাস করত—ছোট্ট কিছু পদক্ষেপ থেকেই বড় পরিবর্তনের সূচনা সম্ভব। সমাজে ইতিবাচক প্রভাব ফেলার লক্ষ্যেই যাত্রা শুরু হয় এই সংগঠনের, যা আজ পরিণত হয়েছে ১৫০+ সদস্যের এক প্রাণবন্ত ও উদ্যমী পরিবারে।
                             </p>
 
-                            <p className="text-xl md:text-2xl leading-relaxed text-gray-100 mb-6">
+                            <p className="text-xl md:text-xl leading-relaxed text-gray-100 mb-6">
                                 এই স্বপ্নকে আনুষ্ঠানিক রূপ দেওয়া হয় ২০১৬ সালের ২রা জানুয়ারি — দিনটি আজ “স্বপ্নযাত্রার সূচনাদিবস” হিসেবে উদযাপিত হয় দ্যা ড্রিমার্স পরিবারে। সেই দিনটিকে কেন্দ্র করেই প্রতিবছর আমরা ফিরে দেখি আমাদের শুরু, উদযাপন করি অগ্রযাত্রা। আজ ৮টি শাখায় ছড়িয়ে থাকা একঝাঁক তরুণ নিষ্ঠা ও ভালোবাসা নিয়ে কাজ করে যাচ্ছে সমাজের প্রতিটি স্তরে আলো ছড়িয়ে দিতে — আগের চেয়ে আরও দৃঢ় প্রত্যয়ে, আরও বিস্তৃত স্বপ্ন নিয়ে।
                             </p>
 
 
-                            <p className="text-xl md:text-2xl leading-relaxed text-gray-100">
+                            <p className="text-xl md:text-xl leading-relaxed text-gray-100">
                                 দ্যা ড্রিমার্স-এর বর্তমান সদস্যদের অনেকেই দেশের সেরা বিশ্ববিদ্যালয়, মেডিকেল কলেজ ও জাতীয় বিশ্ববিদ্যালয়ে কৃতিত্বের সাথে পড়াশোনা চালিয়ে যাচ্ছে। পাশাপাশি, অনেকেই দেশের বিভিন্ন কলেজে উচ্চমাধ্যমিকে অধ্যয়নরত অবস্থায়ও সমাজ পরিবর্তনের এই যাত্রায় সমানভাবে যুক্ত রয়েছে। পড়াশোনার পাশাপাশি তারা সমাজের জন্য সময় দিচ্ছে, কাজ করছে, স্বপ্ন দেখছে — এবং দেখাচ্ছে।
                             </p>
 
@@ -140,7 +140,7 @@ const AboutDreamers = () => {
             <section className="py-32 px-6 bg-slate-800">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-20">
-                        <h2 className="text-4xl py-2 md:text-6xl font-black mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                        <h2 className="text-4xl py-2 md:text-5xl font-black mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                             আমাদের কর্মকান্ড সমূহ
                         </h2>
                         <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full" />
@@ -148,7 +148,7 @@ const AboutDreamers = () => {
 
                     {/* Education Section */}
                     <div className="mb-20">
-                        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                        <h3 className="p-2 text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             শিক্ষার্থীদের কল্যাণে
                         </h3>
                         <div className="grid md:grid-cols-2 gap-8">
@@ -170,7 +170,7 @@ const AboutDreamers = () => {
 
                     {/* Social Work Section */}
                     <div>
-                        <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                        <h3 className="p-2 text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
                             সামাজিক কল্যাণমূলক কাজ
                         </h3>
                         <div className="grid md:grid-cols-2 gap-8">
@@ -193,10 +193,10 @@ const AboutDreamers = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-32 bg-slate-900">
+            {/* <section className="py-32 bg-slate-900">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <div className="mb-12">
-                        <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white via-cyan-100 to-purple-100 bg-clip-text text-transparent">
+                        <h2 className="text-4xl md:text-4xl font-black mb-6 bg-gradient-to-r from-white via-cyan-100 to-purple-100 bg-clip-text text-transparent">
                             আপনিও অংশ হোন
                         </h2>
                         <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
@@ -212,7 +212,7 @@ const AboutDreamers = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </button>
                 </div>
-            </section>
+            </section> */}
 
             <style jsx>{`
         @keyframes gradient-x {
