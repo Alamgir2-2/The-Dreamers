@@ -10,6 +10,7 @@ import Events from './Components/Events/Events'
 import Contact from './Components/Contact/Contact'
 import Advisory from './Components/AboutUs/Advisory'
 import AboutDreamers from './Components/AboutUs/AboutDreamers'
+import DirectorSpace from './Components/AboutUs/DirectorSpeech'
 // import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         {/* About Us */}
         <Route path="/about/advisory" element={<Advisory></Advisory>} />
         <Route path="/about/the-dreamers" element={<AboutDreamers></AboutDreamers>} />
+        <Route path="/about/director-speech" element={<DirectorSpace></DirectorSpace>} />
 
       </Routes>
       <Footer></Footer>
