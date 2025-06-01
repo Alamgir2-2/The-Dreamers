@@ -11,6 +11,7 @@ import Contact from './Components/Contact/Contact'
 import Advisory from './Components/AboutUs/Advisory'
 import AboutDreamers from './Components/AboutUs/AboutDreamers'
 import DirectorSpace from './Components/AboutUs/DirectorSpeech'
+import Members from './Components/AboutUs/Member'
 // import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
         <Route path="/about/advisory" element={<Advisory></Advisory>} />
         <Route path="/about/the-dreamers" element={<AboutDreamers></AboutDreamers>} />
         <Route path="/about/director-speech" element={<DirectorSpace></DirectorSpace>} />
+        <Route path="/about/members" element={<Members></Members>} />
+
 
       </Routes>
       <Footer></Footer>
