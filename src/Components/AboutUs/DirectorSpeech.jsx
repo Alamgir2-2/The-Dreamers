@@ -37,7 +37,7 @@ const ChairmanSpeech = () => {
                   <h3 className="mt-8 text-2xl md:text-3xl font-bold text-gray-900">
                     ডাঃ নাদিম পারভেজ ইমন
                   </h3>
-                  <p className="text-xl text-indigo-600 font-semibold mt-2">চেয়ারমান</p>
+                  <p className="text-xl text-indigo-600 font-semibold mt-2">চেয়ারম্যান</p>
                   <p className="text-sm text-gray-600 mt-2">দ্যা ড্রিমার্স</p>
                 </div>
               </div>
