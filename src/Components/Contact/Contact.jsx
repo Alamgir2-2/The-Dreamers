@@ -142,16 +142,7 @@ const ContactUs = () => {
                             <h3 className="text-xl font-bold mb-4">Connect with Us</h3>
                             <div className="flex space-x-4">
 
-                                {/* Facebook Messenger */}
-                                <a
-                                    href="https://m.me/WeTheDreamersbd"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                                    title="Message us on Facebook"
-                                >
-                                    <FaFacebookMessenger className="text-xl" />
-                                </a>
+                                
 
                                 {/* Whatsapp */}
                                 <a
