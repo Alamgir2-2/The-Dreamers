@@ -314,6 +314,14 @@ const BranchPage = () => {
                             color="bg-[#078d83]"
                         />
                         <TabButton 
+                            active={activeSection === "activities"} 
+                            onClick={() => setActiveSection("activities")}
+                            icon={Award}
+                            label="কার্যক্রম"
+                            count={branch.activities.length}
+                            color="bg-orange-500"
+                        />
+                        <TabButton 
                             active={activeSection === "president"} 
                             onClick={() => setActiveSection("president")}
                             icon={User}
@@ -328,14 +336,7 @@ const BranchPage = () => {
                             count={branch.members.length}
                             color="bg-purple-500"
                         />
-                        <TabButton 
-                            active={activeSection === "activities"} 
-                            onClick={() => setActiveSection("activities")}
-                            icon={Award}
-                            label="কার্যক্রম"
-                            count={branch.activities.length}
-                            color="bg-orange-500"
-                        />
+                        
                     </div>
                 </div>
 
@@ -361,10 +362,14 @@ const BranchPage = () => {
                                     
                                     <div className="space-y-4">
                                         {[
-                                            "বিনামূল্যে চিকিৎসা সেবা",
-                                            "পরিবেশ সংরক্ষণ কার্যক্রম",
-                                            "রক্তদান কর্মসূচি",
-                                            "যুব সমাজের উন্নয়ন"
+                                            "আর্থিকভাবে পিছিয়ে পড়া শিক্ষার্থীদের আর্থিক সহয়তা প্রদান",
+                                            "শিক্ষার্থীদের বাহ্যিক জ্ঞান অর্জনে উদ্ধুদ্ধকরণ",
+                                            "শিক্ষা বিষয়ক প্রতিযোগীতামূলক বিভিন্ন ইভেন্ট পরিচালনা করা",
+                                            "কৃতি শিক্ষার্থীদের সংবর্ধনা প্রদান",
+                                            "রক্তদান কর্মসূচি পরিচালনা",
+                                            "বৃক্ষরোপণ কর্মসূচি পরিচালনা",
+                                            "দারিদ্রকে সহায়তা প্রদান",
+                                            "এছাড়া যেকোনো ইতিবাচক কাজে আমরা নিয়োজিত"
                                         ].map((item, index) => (
                                             <div key={index} className="flex items-start gap-3">
                                                 <div className="mt-1 w-3 h-3 bg-[#078d83] rounded-full flex-shrink-0"></div>
@@ -377,7 +382,7 @@ const BranchPage = () => {
                                 <div className="bg-gradient-to-br from-[#078d83]/10 to-[#078d83]/5 rounded-xl p-6 border border-[#078d83]/20">
                                     <h3 className="text-xl font-semibold text-[#078d83] mb-4 flex items-center">
                                         <span className="w-2 h-6 bg-[#078d83] mr-2 rounded-full"></span>
-                                        যোগাযোগের তথ্য
+                                        যোগাযোগ
                                     </h3>
                                     
                                     <div className="space-y-4">
@@ -389,12 +394,12 @@ const BranchPage = () => {
                                         <ContactItem 
                                             icon={<Phone size={18} />}
                                             title="ফোন"
-                                            value="+৮৮০ ১৭১২-৩৪৫৬১২"
+                                            value="+880 1234567890"
                                         />
                                         <ContactItem 
                                             icon={<Mail size={18} />}
                                             title="ইমেইল"
-                                            value="info@samonta.org"
+                                            value="thedreamersbd.mail@gmail.com"
                                         />
                                     </div>
                                 </div>
