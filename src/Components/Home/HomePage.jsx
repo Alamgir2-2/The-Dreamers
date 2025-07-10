@@ -57,8 +57,9 @@ const Home = () => {
                         }}
                     >
                         Welcome to
-                        <span className="block py-4 bg-gradient-to-r from-green-500 via-blue-400 to-red-500 bg-clip-text text-transparent mt-2">
-                            দ্যা ড্রিমার্স
+                        <span className="block py-4 bg-gradient-to-r from-green-500 via-blue-400 to-red-400 bg-clip-text text-transparent mt-2">
+                            {/* দ্যা ড্রিমার্স */}
+                            THE DREAMERS
                         </span>
                     </motion.h1>
 
@@ -71,6 +72,7 @@ const Home = () => {
                         style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
                     >
                         A Student & Social Welfare Organization
+                        {/* একটি শিক্ষার্থী ও সামাজিক কল্যাণমূলক সংগঠন */}
                     </motion.p>
 
                     {/* Enhanced Call-to-Action Button */}
