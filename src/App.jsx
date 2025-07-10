@@ -14,12 +14,14 @@ import DirectorSpace from './Components/AboutUs/DirectorSpeech'
 import Members from './Components/AboutUs/Member'
 import Registration from './Authentication/Registration'
 import Login from './Authentication/Login'
+import ScrollToTop from './Components/Layout/ScrollTop'
 // import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
   return (
     <div>
       <Header></Header>
+      <ScrollToTop/>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path="/branches/:id" element={<BranchPage></BranchPage>} />
