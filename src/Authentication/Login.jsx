@@ -22,21 +22,18 @@ const Login = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // এখানে API কল বা লগিন ভেরিফিকেশন করো
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         setIsSubmitting(false);
 
-        // সফল লগিন টোস্ট দেখাও
         toast.success("Login successful! Redirecting...", {
             position: "top-right",
             style: { top: "80px" },
             autoClose: 1500,
         });
 
-        // ১.৫ সেকেন্ড পরে ড্যাশবোর্ড বা হোম পেজে নিয়ে যাও
         setTimeout(() => {
-            navigate("/dashboard"); // তোমার লগিন সফল হলে যেই পেজে যাবে সেটা দিতে পারো
+            navigate("/dashboard"); 
         }, 1700);
     };
 
@@ -56,7 +53,7 @@ const Login = () => {
                                 <FaUser className="text-white text-2xl" />
                             </div>
                         </motion.div>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
+                        <h2 className="text-3xl font-bold text-gray-800 mb-2">User Login</h2>
                         <p className="text-gray-600">Login to your account</p>
                     </div>
 
