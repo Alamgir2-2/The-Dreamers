@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
+
 
 const branches = [
     { name: "Samonta", path: "/branches/1" },
@@ -27,6 +28,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isBranchesOpen, setIsBranchesOpen] = useState(false);
     const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -134,7 +136,7 @@ const Header = () => {
                         <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white py-2 px-4 rounded-lg">
                             Donate
                         </button>
-                        <button className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
+                        <button onClick={ () => navigate("/registration")} className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
                     </div>
                 </div>
             </div>

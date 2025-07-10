@@ -12,6 +12,7 @@ import Advisory from './Components/AboutUs/Advisory'
 import AboutDreamers from './Components/AboutUs/AboutDreamers'
 import DirectorSpace from './Components/AboutUs/DirectorSpeech'
 import Members from './Components/AboutUs/Member'
+import Registration from './Authentication/Registration'
 // import AboutUs from './Components/AboutUs/AboutUs'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/about/the-dreamers" element={<AboutDreamers></AboutDreamers>} />
         <Route path="/about/director-speech" element={<DirectorSpace></DirectorSpace>} />
         <Route path="/about/members" element={<Members></Members>} />
+        <Route path="/registration" element={<Registration/>} />
 
 
       </Routes>
