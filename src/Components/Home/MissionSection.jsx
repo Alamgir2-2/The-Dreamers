@@ -37,7 +37,7 @@ const MissionSection = () => {
             ([entry]) => {
                 setInView(entry.isIntersecting);
             },
-            { threshold: isMobile ? 0.1 : 0.2 }
+            { threshold: isMobile ? 0.1 : 0.1 }
         );
 
         if (sectionRef.current) {
