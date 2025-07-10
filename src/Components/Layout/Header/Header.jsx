@@ -188,7 +188,7 @@ const Header = () => {
                     <div className="mt-4 space-x-4">
                         <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white my-2 py-2 px-4 rounded-lg w-full text-center"> Donate</button>
 
-                        <button className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white my-2 py-2 px-4 rounded-lg w-full text-center">Join Us</button>
+                        <button onClick={ () => navigate ("/registration")} className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white my-2 py-2 px-4 rounded-lg w-full text-center">Join Us</button>
                     </div>
                 </nav>
             </div>
