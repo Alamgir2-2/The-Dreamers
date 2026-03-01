@@ -92,7 +92,7 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
         <div className="p-4">
             <div className="max-w-6xl mx-auto">
                 {loading ? (
-                    <div className="text-center py-10 text-gray-600">Loading donors...</div>
+                    <div className="text-center py-10 text-gray-600">Loading donors....</div>
                 ) : filteredDonors.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {filteredDonors.map((donor) => (
