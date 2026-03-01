@@ -24,20 +24,31 @@ const Registration = () => {
     e.preventDefault();
     setIsSubmitting(true);
   
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Submitted:", formData);
-
-    setIsSubmitting(false);
-
-    toast.success("Registration complete. Please log in.", {
-      position: "top-right",
-      style: { top: "80px" },
-      autoClose: 1000,
-    });
-
-    setTimeout(() => {
-      navigate("/login");
-    }, 1500);
+    try {
+      const res = await fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        toast.success("Registration successful!", {
+          position: "top-right",
+          style: { top: "80px" },
+          autoClose: 1000,
+        });
+        setTimeout(() => navigate("/"), 1500);
+      } else {
+        toast.error(data.error || "Registration failed");
+      }
+    } catch (error) {
+      toast.error("Registration failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

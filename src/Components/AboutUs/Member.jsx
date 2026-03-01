@@ -1,344 +1,334 @@
-import React, { useState, useMemo } from 'react';
-import { 
-  Search, 
-  Users, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  GraduationCap, 
-  Heart,
-  Filter,
-  User,
-  Calendar,
-  Building,
-  Home
-} from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { Users, User, Search, Filter, X, Phone, Mail, MapPin, Droplet, Calendar, Building, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Members = () => {
-  // Sample member data - replace with your actual data
-  const [members] = useState([
-    {
-      id: 1,
-      name: "মো: আলমগীর হোসেন",
-      photo: "/images/member1.jpg",
-      school: "সামন্তা মাধ্যমিক বিদ্যালয়",
-      sscBatch: "২০১৫",
-      college: "পদ্মপুকুর সরকারি ডিগ্রী কলেজ",
-      hscBatch: "২০১৭",
-      university: "নোয়াখালী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়",
-      department: "সফটওয়্যার ইঞ্জিনিয়ারিং",
-      bloodGroup: "B+",
-      mobile: "০১৩১৯-৬০২৫৪৫",
-      email: "mahalamgir1213@gmail.com",
-      permanentAddress: "গ্রাম: কুলবাড়িয়া, উপজেলা: মহেশপুর, জেলা: ঝিনাইদহ",
-      currentAddress: "ঢাকা, বাংলাদেশ",
-      branch: "ঢাকা",
-      joinDate: "২০১৬-০১-০২",
-      position: "ভাইস-চেয়ারম্যান",
-      occupation: "ছাত্র"
-    },
-    // {
-    //   id: 2,
-    //   name: "ফাতেমা খাতুন",
-    //   photo: "/images/member2.jpg",
-    //   school: "সাতক্ষীরা সরকারি বালিকা উচ্চ বিদ্যালয়",
-    //   sscBatch: "২০১৭",
-    //   college: "সাতক্ষীরা সরকারি কলেজ",
-    //   hscBatch: "২০১৯",
-    //   university: "ঢাকা বিশ্ববিদ্যালয়",
-    //   department: "বাংলা",
-    //   bloodGroup: "A+",
-    //   mobile: "০১৮১২৩৪৫৬৭৮",
-    //   email: "fatema@gmail.com",
-    //   permanentAddress: "গ্রাম: শ্যামনগর, উপজেলা: শ্যামনগর, জেলা: সাতক্ষীরা",
-    //   currentAddress: "ঢাকা, বাংলাদেশ",
-    //   branch: "ঢাকা",
-    //   joinDate: "২০২২-০২-২০",
-    //   position: "সহ-সভাপতি",
-    //   occupation: "শিক্ষক"
-    // },
-    // {
-    //   id: 3,
-    //   name: "আব্দুল কাদের মোল্লা",
-    //   photo: "/images/member3.jpg",
-    //   school: "কালীগঞ্জ পাইলট উচ্চ বিদ্যালয়",
-    //   sscBatch: "২০১৬",
-    //   college: "সাতক্ষীরা সরকারি কলেজ",
-    //   hscBatch: "২০১৮",
-    //   university: "চট্টগ্রাম বিশ্ববিদ্যালয়",
-    //   department: "ব্যবসায় প্রশাসন",
-    //   bloodGroup: "O+",
-    //   mobile: "০১৯১২৩৪৫৬৭৮",
-    //   email: "kader@gmail.com",
-    //   permanentAddress: "গ্রাম: কালীগঞ্জ সদর, উপজেলা: কালীগঞ্জ, জেলা: সাতক্ষীরা",
-    //   currentAddress: "চট্টগ্রাম, বাংলাদেশ",
-    //   branch: "চট্টগ্রাম",
-    //   joinDate: "২০২১-১২-১০",
-    //   position: "সাধারণ সম্পাদক",
-    //   occupation: "ব্যবসায়ী"
-    // },
-    // {
-    //   id: 4,
-    //   name: "নুরুন্নাহার বেগম",
-    //   photo: "/images/member4.jpg",
-    //   school: "তালা উচ্চ বিদ্যালয়",
-    //   sscBatch: "২০১৯",
-    //   college: "সাতক্ষীরা সরকারি কলেজ",
-    //   hscBatch: "২০২১",
-    //   university: "জাহাঙ্গীরনগর বিশ্ববিদ্যালয়",
-    //   department: "সমাজবিজ্ঞান",
-    //   bloodGroup: "AB+",
-    //   mobile: "০১৬১২৩৪৫৆৭৮",
-    //   email: "nurun@gmail.com",
-    //   permanentAddress: "গ্রাম: তালা সদর, উপজেলা: তালা, জেলা: সাতক্ষীরা",
-    //   currentAddress: "সাভার, ঢাকা",
-    //   branch: "ঢাকা",
-    //   joinDate: "২০২২-০৩-০৫",
-    //   position: "সাধারণ সদস্য",
-    //   occupation: "ছাত্রী"
-    // },
-    // {
-    //   id: 5,
-    //   name: "মোহাম্মদ শাকিল আহমেদ",
-    //   photo: "/images/member5.jpg",
-    //   school: "আশাশুনি উচ্চ বিদ্যালয়",
-    //   sscBatch: "২০১৫",
-    //   college: "যশোর সরকারি মাইকেল মধুসূদন কলেজ",
-    //   hscBatch: "২০১৭",
-    //   university: "বুয়েট",
-    //   department: "ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং",
-    //   bloodGroup: "B-",
-    //   mobile: "০১৫১২৩৪৫৬৭৮",
-    //   email: "shakil@gmail.com",
-    //   permanentAddress: "গ্রাম: আশাশুনি সদর, উপজেলা: আশাশুনি, জেলা: সাতক্ষীরা",
-    //   currentAddress: "ঢাকা, বাংলাদেশ",
-    //   branch: "ঢাকা",
-    //   joinDate: "২০২১-১১-২৫",
-    //   position: "কোষাধ্যক্ষ",
-    //   occupation: "ইঞ্জিনিয়ার"
-    // }
-  ]);
+  const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPosition, setSelectedPosition] = useState('');
+  const [selectedProfession, setSelectedProfession] = useState('');
+  const [selectedMember, setSelectedMember] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 20;
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBranch, setSelectedBranch] = useState("");
-  const [selectedBloodGroup, setSelectedBloodGroup] = useState("");
-  const [selectedBatch, setSelectedBatch] = useState("");
+  useEffect(() => {
+    fetchMembers();
+  }, []);
 
-  // Get unique values for filters
-  const branches = [...new Set(members.map(member => member.branch))];
-  const bloodGroups = [...new Set(members.map(member => member.bloodGroup))];
-  const sscBatches = [...new Set(members.map(member => member.sscBatch))];
+  const fetchMembers = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/members');
+      const data = await res.json();
+      setMembers(data);
+    } catch (error) {
+      console.error('Failed to load members:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // Filter members based on search and filters
+  const positions = [...new Set(members.map(m => m.orgPosition).filter(Boolean))];
+  const professions = [...new Set(members.map(m => m.professionType).filter(Boolean))];
+
   const filteredMembers = useMemo(() => {
     return members.filter(member => {
-      const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           member.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           member.mobile.includes(searchTerm) ||
-                           member.school.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           member.college.toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesBranch = selectedBranch === "" || member.branch === selectedBranch;
-      const matchesBloodGroup = selectedBloodGroup === "" || member.bloodGroup === selectedBloodGroup;
-      const matchesBatch = selectedBatch === "" || member.sscBatch === selectedBatch;
-
-      return matchesSearch && matchesBranch && matchesBloodGroup && matchesBatch;
+      const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesPosition = !selectedPosition || member.orgPosition === selectedPosition;
+      const matchesProfession = !selectedProfession || member.professionType === selectedProfession;
+      return matchesSearch && matchesPosition && matchesProfession;
     });
-  }, [members, searchTerm, selectedBranch, selectedBloodGroup, selectedBatch]);
+  }, [members, searchTerm, selectedPosition, selectedProfession]);
+
+  const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
+  const paginatedMembers = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredMembers.slice(start, start + itemsPerPage);
+  }, [filteredMembers, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedPosition, selectedProfession]);
+
+  const imageVariants = {
+    offscreen: { y: 100, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", bounce: 0.4, duration: 1.5 },
+    },
+  };
+
+  const cardVariants = {
+    offscreen: { y: 100, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", bounce: 0.4, duration: 1.6, delay: 0.3 },
+    },
+  };
 
   const MemberCard = ({ member }) => (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
-      {/* Member Photo & Basic Info */}
-      <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-6 text-white">
-        <div className="flex items-center space-x-4">
-          <div className="w-20 h-20 rounded-full overflow-hidden bg-white/20 flex-shrink-0">
-            <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-              <User size={40} className="text-gray-600" />
-            </div>
+    <div className="relative cursor-pointer" onClick={() => setSelectedMember(member)}>
+      <motion.div
+        className="absolute -top-8 sm:-top-16 left-1/2 transform -translate-x-1/2 w-16 h-16 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 sm:border-4 border-white shadow-lg z-10 transition-transform hover:scale-115"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={imageVariants}
+      >
+        {member.photo ? (
+          <img src={member.photo} alt={member.name} className="w-full h-full object-cover object-center" />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-blue-200 to-indigo-200 flex items-center justify-center">
+            <User size={24} className="sm:hidden text-blue-600" />
+            <User size={48} className="hidden sm:block text-blue-600" />
           </div>
-          <div className="flex-1">
-            <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-            <p className="text-blue-100 font-medium">{member.position}</p>
-            <p className="text-blue-200 text-sm">{member.occupation}</p>
-          </div>
-        </div>
-      </div>
+        )}
+      </motion.div>
 
-      {/* Member Details */}
-      <div className="p-6 space-y-4">
-        
-        {/* Contact Information */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="flex items-center space-x-3">
-            <Phone size={16} className="text-green-500" />
-            <span className="text-sm text-gray-700">{member.mobile}</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <Mail size={16} className="text-blue-500" />
-            <span className="text-sm text-gray-700">{member.email}</span>
-          </div>
-        </div>
-
-        {/* Education */}
-        <div className="bg-gray-50 rounded-lg p-4">
-          <div className="flex items-center mb-3">
-            <GraduationCap size={18} className="text-indigo-500 mr-2" />
-            <h4 className="font-semibold text-gray-800">শিক্ষাগত যোগ্যতা</h4>
-          </div>
-          <div className="space-y-2 text-sm text-gray-600">
-            <div>
-              <span className="font-medium">স্কুল:</span> {member.school} (এসএসসি: {member.sscBatch})
-            </div>
-            <div>
-              <span className="font-medium">কলেজ:</span> {member.college} (এইচএসসি: {member.hscBatch})
-            </div>
-            <div>
-              <span className="font-medium">বিশ্ববিদ্যালয়:</span> {member.university}
-            </div>
-            <div>
-              <span className="font-medium">বিভাগ:</span> {member.department}
-            </div>
-          </div>
-        </div>
-
-        {/* Other Details */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex items-center space-x-2">
-            <Heart size={16} className="text-red-500" />
-            <span className="text-sm font-medium text-gray-700">{member.bloodGroup}</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Building size={16} className="text-purple-500" />
-            <span className="text-sm text-gray-700">{member.branch}</span>
-          </div>
-        </div>
-
-        {/* Address */}
-        <div className="space-y-2">
-          <div className="flex items-start space-x-2">
-            <Home size={16} className="text-orange-500 mt-1" />
-            <div>
-              <p className="text-sm font-medium text-gray-800">স্থায়ী ঠিকানা:</p>
-              <p className="text-sm text-gray-600">{member.permanentAddress}</p>
-            </div>
-          </div>
-          <div className="flex items-start space-x-2">
-            <MapPin size={16} className="text-green-500 mt-1" />
-            <div>
-              <p className="text-sm font-medium text-gray-800">বর্তমান ঠিকানা:</p>
-              <p className="text-sm text-gray-600">{member.currentAddress}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Join Date */}
-        <div className="pt-2 border-t border-gray-200">
-          <div className="flex items-center space-x-2">
-            <Calendar size={16} className="text-blue-500" />
-            <span className="text-sm text-gray-600">যোগদানের তারিখ: {member.joinDate}</span>
-          </div>
-        </div>
-      </div>
+      <motion.div
+        className="bg-white h-full border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-gray-500 pt-10 sm:pt-20 pb-2 sm:pb-6 px-1 sm:px-6 text-center"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={cardVariants}
+      >
+        <h2 className="text-[10px] sm:text-xl font-semibold text-gray-900 line-clamp-2 leading-tight">{member.name}</h2>
+        <p className="mt-0.5 sm:mt-2 text-[8px] sm:text-sm text-green-600 line-clamp-1">{member.orgPosition || 'Member'}</p>
+        <p className="mt-0.5 sm:mt-4 text-[8px] sm:text-sm text-gray-600 line-clamp-1">{member.professionType || 'N/A'}</p>
+      </motion.div>
     </div>
   );
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
-      {/* Header */}
-      <div className="bg-blue-50 py-10">
-        <div className="container mx-auto text-center">
-          <div className="flex justify-center mb-4">
-            <Users size={48} className="text-[#078d83]" />
-          </div>
-          <h1 className="text-5xl font-bold text-[#078d83] mb-4">সদস্য তালিকা</h1>
-          <p className="text-xl text-gray-600">দ্যা ড্রিমার্স - সকল সদস্যদের সম্পূর্ণ তথ্য</p>
-          <div className="mt-6 flex justify-center">
-            <div className="bg-blue-200 backdrop-blur-md rounded-full px-6 py-2">
-              <span className="text-lg font-semibold text-gray-700">মোট সদস্য: {members.length} জন</span>
-            </div>
-          </div>
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <Users size={64} className="mx-auto text-[#078d83] mb-4 animate-pulse" />
+          <p className="text-xl text-gray-600">Loading members...</p>
         </div>
       </div>
+    );
+  }
 
-      {/* Search and Filter Section */}
-      <div className="bg-white shadow-lg border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col lg:flex-row gap-4 items-center">
-            
-            {/* Search Bar */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+  return (
+    <div className="min-h-screen">
+      {selectedMember && (
+        <motion.div 
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4" 
+          onClick={() => setSelectedMember(null)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div 
+            className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" 
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", duration: 0.3 }}
+          >
+            <div className="sticky top-0 bg-gradient-to-r from-teal-500 to-green-500 text-white p-4 sm:p-6 flex justify-between items-start">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 sm:border-4 border-white flex-shrink-0">
+                  {selectedMember.photo ? (
+                    <img src={selectedMember.photo} alt={selectedMember.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-white/20 flex items-center justify-center">
+                      <User size={40} className="text-white" />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <h2 className="text-lg sm:text-2xl font-bold">{selectedMember.name}</h2>
+                  <p className="text-sm sm:text-base text-blue-100">{selectedMember.orgPosition || 'Member'}</p>
+                </div>
+              </div>
+              <button onClick={() => setSelectedMember(null)} className="text-white hover:bg-white/20 p-2 rounded-lg">
+                <X size={24} />
+              </button>
+            </div>
+            <div className="p-6 space-y-3">
+              {selectedMember.mobile && (
+                <div className="flex items-center gap-3 bg-green-50 p-3 rounded-lg">
+                  <div className="bg-green-500 p-2 rounded-full">
+                    <Phone size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Mobile</p>
+                    <p className="text-gray-800 font-medium">{selectedMember.mobile}</p>
+                  </div>
+                </div>
+              )}
+              {selectedMember.email && (
+                <div className="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
+                  <div className="bg-blue-500 p-2 rounded-full">
+                    <Mail size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Email</p>
+                    <p className="text-gray-800 font-medium">{selectedMember.email}</p>
+                  </div>
+                </div>
+              )}
+              {selectedMember.professionType && (
+                <div className="flex items-start gap-3 bg-purple-50 p-3 rounded-lg">
+                  <div className="bg-purple-500 p-2 rounded-full">
+                    <Building size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Profession</p>
+                    <p className="text-gray-800 font-medium">{selectedMember.professionType}</p>
+                    {selectedMember.institution && <p className="text-sm text-gray-600 mt-1">{selectedMember.institution}</p>}
+                    {selectedMember.designation && <p className="text-sm text-gray-600">{selectedMember.designation}</p>}
+                  </div>
+                </div>
+              )}
+              {selectedMember.bloodGroup && (
+                <div className="flex items-center gap-3 bg-red-50 p-3 rounded-lg">
+                  <div className="bg-red-500 p-2 rounded-full">
+                    <Droplet size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Blood Group</p>
+                    <p className="text-gray-800 font-medium">{selectedMember.bloodGroup}</p>
+                  </div>
+                </div>
+              )}
+              {selectedMember.lastBloodDonation && (
+                <div className="flex items-center gap-3 bg-orange-50 p-3 rounded-lg">
+                  <div className="bg-orange-500 p-2 rounded-full">
+                    <Calendar size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Last Blood Donation</p>
+                    <p className="text-gray-800 font-medium">{new Date(selectedMember.lastBloodDonation).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              )}
+              {selectedMember.school && (
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-100">
+                  <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <div className="w-1 h-5 bg-blue-500 rounded"></div>
+                    Education
+                  </h3>
+                  <div className="space-y-2">
+                    <p className="text-sm text-gray-700"><span className="font-medium">School:</span> {selectedMember.school}</p>
+                    {selectedMember.college && <p className="text-sm text-gray-700"><span className="font-medium">College:</span> {selectedMember.college}</p>}
+                    {selectedMember.university && <p className="text-sm text-gray-700"><span className="font-medium">University:</span> {selectedMember.university}</p>}
+                  </div>
+                </div>
+              )}
+              {selectedMember.orgBranch && (
+                <div className="bg-gradient-to-r from-teal-50 to-green-50 p-4 rounded-lg border border-teal-100">
+                  <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <div className="w-1 h-5 bg-teal-500 rounded"></div>
+                    Organization
+                  </h3>
+                  <p className="text-sm text-gray-700"><span className="font-medium">Branch:</span> {selectedMember.orgBranch}</p>
+                </div>
+              )}
+              {selectedMember.currentAddress && (
+                <div className="flex items-start gap-3 bg-pink-50 p-3 rounded-lg">
+                  <div className="bg-pink-500 p-2 rounded-full">
+                    <MapPin size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Current Address</p>
+                    <p className="text-sm text-gray-700 mt-1">{selectedMember.currentAddress}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+      <div className="text-center mb-12 sm:mb-20 bg-blue-50 py-6 sm:py-12 px-2 sm:px-6">
+        <div className="flex justify-center mb-2 sm:mb-3">
+          <Users size={32} className="sm:hidden text-[#078d83]" />
+          <Users size={40} className="hidden sm:block text-[#078d83]" />
+        </div>
+        <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#078d83]">Members List</h1>
+        <p className="mt-1 sm:mt-2 text-xs sm:text-base text-gray-600">The Dreamers - Complete Information of All Members</p>
+        
+        <div className="mt-4 sm:mt-6 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-2 sm:gap-3 items-center">
+            <div className="flex-1 relative w-full">
+              <Search className="absolute left-2 sm:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
               <input
                 type="text"
-                placeholder="নাম, ইমেইল, মোবাইল, স্কুল বা কলেজ দিয়ে খুঁজুন..."
+                placeholder="Search by name..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                className="w-full pl-8 sm:pl-10 pr-3 sm:pr-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-xs sm:text-sm"
               />
             </div>
-
-            {/* Filters */}
-            <div className="flex flex-wrap gap-3">
-              <div className="flex items-center space-x-2">
-                <Filter size={16} className="text-gray-500" />
+            <div className="flex gap-1.5 sm:gap-2">
+              <div className="flex items-center space-x-0.5 sm:space-x-1">
+                <Filter size={12} className="sm:hidden text-gray-500" />
+                <Filter size={14} className="hidden sm:block text-gray-500" />
                 <select
-                  value={selectedBranch}
-                  onChange={(e) => setSelectedBranch(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                  value={selectedPosition}
+                  onChange={(e) => setSelectedPosition(e.target.value)}
+                  className="px-1.5 sm:px-2 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-[10px] sm:text-xs"
                 >
-                  <option value="">সব শাখা</option>
-                  {branches.map(branch => (
-                    <option key={branch} value={branch}>{branch}</option>
-                  ))}
+                  <option value="">All Positions</option>
+                  {positions.map(pos => <option key={pos} value={pos}>{pos}</option>)}
                 </select>
               </div>
-
               <select
-                value={selectedBloodGroup}
-                onChange={(e) => setSelectedBloodGroup(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                value={selectedProfession}
+                onChange={(e) => setSelectedProfession(e.target.value)}
+                className="px-1.5 sm:px-2 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-[10px] sm:text-xs"
               >
-                <option value="">সব রক্তের গ্রুপ</option>
-                {bloodGroups.map(group => (
-                  <option key={group} value={group}>{group}</option>
-                ))}
-              </select>
-
-              <select
-                value={selectedBatch}
-                onChange={(e) => setSelectedBatch(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
-              >
-                <option value="">সব ব্যাচ</option>
-                {sscBatches.map(batch => (
-                  <option key={batch} value={batch}>এসএসসি {batch}</option>
-                ))}
+                <option value="">All Professions</option>
+                {professions.map(prof => <option key={prof} value={prof}>{prof}</option>)}
               </select>
             </div>
           </div>
+        </div>
 
-          {/* Results Count */}
-          <div className="mt-4 text-center">
-            <span className="text-gray-600">
-              {filteredMembers.length} জন সদস্য পাওয়া গেছে
-            </span>
+        <div className="mt-3 sm:mt-4 flex justify-center">
+          <div className="bg-blue-200 backdrop-blur-md rounded-full px-3 sm:px-4 py-0.5 sm:py-1">
+            <span className="text-xs sm:text-sm font-semibold text-gray-700">Total Members: {filteredMembers.length}</span>
           </div>
         </div>
       </div>
 
-      {/* Members Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {filteredMembers.length > 0 ? (
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {filteredMembers.map(member => (
-              <MemberCard key={member.id} member={member} />
-            ))}
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {paginatedMembers.length > 0 ? (
+          <>
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-20 lg:gap-8">
+              {paginatedMembers.map(member => (
+                <MemberCard key={member.id} member={member} />
+              ))}
+            </div>
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 mt-12 mb-8">
+                <button
+                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="p-2 rounded-lg border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <span className="text-sm text-gray-600">Page {currentPage} of {totalPages}</span>
+                <button
+                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="p-2 rounded-lg border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-16">
             <Users size={64} className="mx-auto text-gray-300 mb-4" />
-            <h3 className="text-2xl font-semibold text-gray-600 mb-2">কোন সদস্য পাওয়া যায়নি</h3>
-            <p className="text-gray-500">অনুসন্ধানের শর্ত পরিবর্তন করে আবার চেষ্টা করুন</p>
+            <h3 className="text-2xl font-semibold text-gray-600 mb-2">No members found</h3>
           </div>
         )}
       </div>

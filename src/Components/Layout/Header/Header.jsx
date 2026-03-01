@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaUser, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
 
 
@@ -28,7 +28,40 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isBranchesOpen, setIsBranchesOpen] = useState(false);
     const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            const parsedUser = JSON.parse(userData);
+            setUser(parsedUser);
+            // Fetch full profile to get photo
+            fetchUserProfile();
+        }
+    }, []);
+
+    const fetchUserProfile = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('http://localhost:3000/api/user/profile', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await res.json();
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify({ id: data.id, name: data.name, email: data.email, photo: data.photo, position: data.position }));
+        } catch (error) {
+            console.error('Failed to fetch profile');
+        }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+        navigate('/');
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -132,11 +165,41 @@ const Header = () => {
                     </nav>
 
                     {/* Action Buttons */}
-                    <div className="hidden md:flex space-x-4">
+                    <div className="hidden md:flex space-x-4 items-center">
                         <button className="bg-[#078d83] hover:bg-white hover:text-black hover:border border-[#078d83] text-white py-2 px-4 rounded-lg">
                             Donate
                         </button>
-                        <button onClick={ () => navigate("/registration")} className="bg-blue-500  hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
+                        <button onClick={() => navigate("/registration")} className="bg-blue-500 hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
+                        
+                        <div className="relative">
+                            <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300">
+                                {user && user.photo ? (
+                                    <img src={user.photo} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
+                                ) : (
+                                    <FaUser className="text-gray-600" />
+                                )}
+                            </button>
+                            {isUserMenuOpen && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-10">
+                                    {user ? (
+                                        <>
+                                            <div className="px-4 py-2 border-b">
+                                                <p className="font-semibold">{user.name}</p>
+                                                <p className="text-sm text-gray-500">{user.position || 'Member'}</p>
+                                            </div>
+                                            <Link to="/profile" className="block px-4 py-2 text-black hover:bg-gray-100">Profile</Link>
+                                            <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-black hover:bg-gray-100 flex items-center gap-2">
+                                                <FaSignOutAlt /> Logout
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <button onClick={() => navigate('/login')} className="w-full text-left px-4 py-2 text-black hover:bg-gray-100">
+                                            Login
+                                        </button>
+                                    )}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

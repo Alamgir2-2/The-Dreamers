@@ -22,19 +22,31 @@ const Login = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            const res = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            const data = await res.json();
 
-        setIsSubmitting(false);
-
-        toast.success("Login successful! Redirecting...", {
-            position: "top-right",
-            style: { top: "80px" },
-            autoClose: 1500,
-        });
-
-        setTimeout(() => {
-            navigate("/dashboard"); 
-        }, 1700);
+            if (res.ok) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                toast.success("Login successful!", {
+                    position: "top-right",
+                    style: { top: "80px" },
+                    autoClose: 1500,
+                });
+                setTimeout(() => navigate("/"), 1700);
+            } else {
+                toast.error(data.error || "Login failed");
+            }
+        } catch (error) {
+            toast.error("Login failed. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
