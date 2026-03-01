@@ -27,7 +27,7 @@ const bloodBankActivities = [
     {
         title: "Blood Donation Registration",
         description: "Sign up to donate blood and be a part of our ongoing efforts to provide safe blood to those in need.",
-        image: "/images/registration.jpg",
+        image: [bbaward],
     },
 ];
 

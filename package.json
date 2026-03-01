@@ -8,7 +8,9 @@
     "server": "node server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma db push && vite build"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
