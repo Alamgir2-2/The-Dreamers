@@ -8,6 +8,7 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
     const [loading, setLoading] = useState(true);
 
     const calculateAvailability = (lastDonation) => {
+        if (!lastDonation) return 999; // If no donation date, show as unavailable
         const today = new Date();
         const lastDonationDate = new Date(lastDonation);
         const timeDifference = today - lastDonationDate;
@@ -37,7 +38,7 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
                     'ab-negative': 'AB-'
                 };
                 const bg = bgMap[bloodGroup.toLowerCase()];
-                const res = await fetch(`${API_URL}/donors?bloodGroup=${encodeURIComponent(bg)}`);
+                const res = await fetch(`${API_URL}/api/donors?bloodGroup=${encodeURIComponent(bg)}`);
                 const data = await res.json();
                 if (Array.isArray(data)) {
                     const donorsWithAvailability = data.map(donor => ({
@@ -74,11 +75,13 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
     });
 
     const isDonorAvailable = (availableAfter) => {
-        return availableAfter === 0;
+        return availableAfter === 0 || availableAfter >= 999;
     };
 
     const getAvailabilityMessage = (availableAfter) => {
-        if (availableAfter === 0) {
+        if (availableAfter >= 999) {
+            return "Available";
+        } else if (availableAfter === 0) {
             return "Available";
         } else {
             return `Available in ${availableAfter} days`;
