@@ -19,7 +19,7 @@ const Members = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await fetch(`${API_URL}/members`);
+      const res = await fetch(`${API_URL}/api/members`);
       const data = await res.json();
       setMembers(data);
     } catch (error) {
