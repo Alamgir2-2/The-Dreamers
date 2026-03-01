@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaEdit, FaTrash, FaPlus, FaFilter, FaUpload } from "react-icons/fa";
 import toast from 'react-hot-toast';
-
-const API_URL = 'http://localhost:3000/api';
+import API_URL from '../config/api';
 
 const ManageBloodBank = () => {
     const [donors, setDonors] = useState([]);

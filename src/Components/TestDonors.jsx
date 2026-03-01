@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import API_URL from '../config/api';
 
 const TestDonors = () => {
     const [donors, setDonors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/donors')
+        fetch(`${API_URL}/api/donors`)
             .then(r => r.json())
             .then(data => {
                 console.log('All donors:', data);

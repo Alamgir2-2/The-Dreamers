@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Users, User, Search, Filter, X, Phone, Mail, MapPin, Droplet, Calendar, Building, ChevronLeft, ChevronRight } from 'lucide-react';
+import API_URL from '../../config/api';
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -18,7 +19,7 @@ const Members = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/members');
+      const res = await fetch(`${API_URL}/api/members`);
       const data = await res.json();
       setMembers(data);
     } catch (error) {

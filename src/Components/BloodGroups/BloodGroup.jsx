@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Search, X, Phone, MapPin, School, Heart } from "lucide-react";
 import noData from "../../assets/Blood/Data.png";
-
-const API_URL = 'http://localhost:3000/api';
+import API_URL from '../../config/api';
 
 const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all" }) => {
     const [donors, setDonors] = useState([]);

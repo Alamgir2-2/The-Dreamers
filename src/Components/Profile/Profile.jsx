@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaPhone, FaMapMarkerAlt, FaBriefcase, FaTint, FaEdit, FaSave, FaSchool, FaUniversity, FaCalendar, FaChevronDown, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import API_URL from '../../config/api';
 
 /* ─── Custom Dropdown ─────────────────────────────────────── */
 const CustomSelect = ({ value, onChange, options, placeholder = 'Select', disabled }) => {
@@ -203,7 +204,7 @@ const Profile = () => {
     const fetchProfile = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:3000/api/user/profile', { headers: { 'Authorization': `Bearer ${token}` } });
+            const res = await fetch(`${API_URL}/api/user/profile`, { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await res.json();
             setUser(data); setFormData(data);
         } catch { toast.error('Failed to load profile'); }
@@ -212,7 +213,7 @@ const Profile = () => {
     const handleUpdate = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:3000/api/user/profile', {
+            const res = await fetch(`${API_URL}/api/user/profile`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(formData)
@@ -234,7 +235,7 @@ const Profile = () => {
         reader.readAsDataURL(file);
         reader.onloadend = async () => {
             try {
-                const res = await fetch('http://localhost:3000/api/upload', {
+                const res = await fetch(`${API_URL}/api/upload`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ file: reader.result })
                 });

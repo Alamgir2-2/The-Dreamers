@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronDown, FaUser, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
+import API_URL from '../../../config/api';
 
 
 const branches = [
@@ -45,7 +46,7 @@ const Header = () => {
     const fetchUserProfile = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:3000/api/user/profile', {
+            const res = await fetch(`${API_URL}/api/user/profile`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await res.json();

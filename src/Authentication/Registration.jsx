@@ -4,6 +4,7 @@ import {FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaSpinner,} from "react-i
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_URL from '../config/api';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const Registration = () => {
     setIsSubmitting(true);
   
     try {
-      const res = await fetch('http://localhost:3000/api/auth/register', {
+      const res = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
