@@ -19,8 +19,8 @@ const branches = [
 const aboutUsLinks = [
     { name: "About The Dreamers", path: "/about/the-dreamers" },
     { name: "Director Speech", path: "/about/director-speech" },
-    { name: "Advisory", path: "/about/advisory" },
-    { name: "Members", path: "/about/members" },
+    { name: "Advisory", path: "/about/advisory", protected: true },
+    { name: "Members", path: "/about/members", protected: true },
     { name: "FAQs", path: "/about/faqs" },
     { name: "Support Us", path: "/about/support-us" },
 ];
@@ -187,7 +187,7 @@ const Header = () => {
                                     onMouseEnter={() => handleMouseEnter(setIsAboutUsOpen)}
                                     onMouseLeave={() => handleMouseLeave(setIsAboutUsOpen)}
                                 >
-                                    {aboutUsLinks.map((link) => (
+                                    {aboutUsLinks.filter(link => !link.protected || user).map((link) => (
                                         <Link key={link.path} to={link.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                             {link.name}
                                         </Link>
@@ -272,7 +272,7 @@ const Header = () => {
                         </button>
                         {isAboutUsOpen && (
                             <div className="mt-2 bg-white shadow-lg shadow-green-600 rounded-lg">
-                                {aboutUsLinks.map((link) => (
+                                {aboutUsLinks.filter(link => !link.protected || user).map((link) => (
                                     <Link key={link.path} to={link.path} className="block px-4 py-2 text-black hover:bg-green-600">
                                         {link.name}
                                     </Link>

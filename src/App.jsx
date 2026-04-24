@@ -27,6 +27,7 @@ import ManageMembers from './Admin/ManageMembers'
 import ManageBranches from './Admin/ManageBranches'
 import ManageMessages from './Admin/ManageMessages'
 import ProtectedRoute from './Admin/ProtectedRoute'
+import UserProtectedRoute from './Components/UserProtectedRoute'
 
 function App() {
   return (
@@ -45,10 +46,10 @@ function App() {
 
 
         {/* About Us */}
-        <Route path="/about/advisory" element={<Advisory></Advisory>} />
+        <Route path="/about/advisory" element={<UserProtectedRoute><Advisory /></UserProtectedRoute>} />
         <Route path="/about/the-dreamers" element={<AboutDreamers></AboutDreamers>} />
         <Route path="/about/director-speech" element={<DirectorSpace></DirectorSpace>} />
-        <Route path="/about/members" element={<Members></Members>} />
+        <Route path="/about/members" element={<UserProtectedRoute><Members /></UserProtectedRoute>} />
         <Route path="/test-donors" element={<TestDonors />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/registration" element={<Registration/>} />
