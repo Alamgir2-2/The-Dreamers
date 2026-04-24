@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaChevronDown, FaUser, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
 import API_URL from '../../../config/api';
@@ -32,15 +32,46 @@ const Header = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+    const userMenuRef = useRef(null);
+
+    useEffect(() => {
+        setIsUserMenuOpen(false);
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+                setIsUserMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     useEffect(() => {
         const userData = localStorage.getItem('user');
         if (userData) {
-            const parsedUser = JSON.parse(userData);
-            setUser(parsedUser);
-            // Fetch full profile to get photo
+            setUser(JSON.parse(userData));
             fetchUserProfile();
         }
+
+        const handleStorage = () => {
+            const userData = localStorage.getItem('user');
+            if (userData) {
+                setUser(JSON.parse(userData));
+            } else {
+                setUser(null);
+                setIsUserMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('storage', handleStorage);
+        window.addEventListener('userUpdated', handleStorage);
+        return () => {
+            window.removeEventListener('storage', handleStorage);
+            window.removeEventListener('userUpdated', handleStorage);
+        };
     }, []);
 
     const fetchUserProfile = async () => {
@@ -61,6 +92,8 @@ const Header = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         setUser(null);
+        setIsUserMenuOpen(false);
+        window.dispatchEvent(new Event('userUpdated'));
         navigate('/');
     };
 
@@ -82,7 +115,7 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-white sticky top-0 shadow-lg shadow-green-800 z-50">
+        <header className="bg-white sticky top-0 shadow-xs shadow-green-800 z-50">
             <div className="max-w-7xl mx-auto px-4 md:py-2 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -172,7 +205,7 @@ const Header = () => {
                         </button>
                         <button onClick={() => navigate("/registration")} className="bg-blue-500 hover:bg-white hover:text-black hover:border border-blue-500 text-white py-2 px-4 rounded-lg">Join Us</button>
                         
-                        <div className="relative">
+                        <div className="relative" ref={userMenuRef}>
                             <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300">
                                 {user && user.photo ? (
                                     <img src={user.photo} alt={user.name} className="w-10 h-10 rounded-full object-cover" />

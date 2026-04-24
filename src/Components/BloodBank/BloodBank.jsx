@@ -309,7 +309,7 @@ const BloodBankPage = () => {
                                 </button>
                                 <Droplet size={24} className="text-red-500" />
                                 <div>
-                                    <h1 className="text-lg md:text-2xl font-bold text-gray-800">Blood Bank</h1>
+                                    <h1 className="text-lg md:text-2xl font-bold text-gray-800">THE DREAMERS BLOOD BANK</h1>
                                     {activeSection !== "activities" && activeSection !== "president" && activeSection !== "members" && activeSection !== "branchDetails" && (
                                         <p className="text-xs md:text-sm text-gray-600 capitalize">{activeSection.replace("-", " ")} Blood Donors</p>
                                     )}

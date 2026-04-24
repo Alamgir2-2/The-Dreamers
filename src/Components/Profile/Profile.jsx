@@ -220,10 +220,11 @@ const Profile = () => {
             });
             const data = await res.json();
             setUser(data);
+            setFormData(data);
             localStorage.setItem('user', JSON.stringify({ id: data.id, name: data.name, email: data.email, photo: data.photo }));
+            window.dispatchEvent(new Event('userUpdated'));
             setIsEditing(false);
             toast.success('Profile updated successfully!');
-            window.location.reload();
         } catch { toast.error('Failed to update profile'); }
     };
 
@@ -300,9 +301,7 @@ const Profile = () => {
                     background: var(--bg);
                     font-family: 'Plus Jakarta Sans', sans-serif;
                     padding: 32px 16px 48px;
-                    animation: profileIn 0.3s ease;
                 }
-                @keyframes profileIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 
                 .p-container { max-width: 1080px; margin: 0 auto; }
 

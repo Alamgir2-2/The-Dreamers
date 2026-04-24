@@ -34,12 +34,23 @@ const Login = () => {
             if (res.ok) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
+                
+                // Fetch full profile to get photo
+                try {
+                    const profileRes = await fetch(`${API_URL}/api/user/profile`, {
+                        headers: { 'Authorization': `Bearer ${data.token}` }
+                    });
+                    const profileData = await profileRes.json();
+                    localStorage.setItem('user', JSON.stringify(profileData));
+                    window.dispatchEvent(new Event('userUpdated'));
+                } catch {}
+
                 toast.success("Login successful!", {
                     position: "top-right",
                     style: { top: "80px" },
-                    autoClose: 1500,
+                    autoClose: 1000,
                 });
-                setTimeout(() => navigate("/"), 1700);
+                setTimeout(() => navigate("/"), 1200);
             } else {
                 toast.error(data.error || "Login failed");
             }
