@@ -8,12 +8,10 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
     const [loading, setLoading] = useState(true);
 
     const calculateAvailability = (lastDonation) => {
-        if (!lastDonation) return 999;
-        const today = new Date();
-        const lastDonationDate = new Date(lastDonation);
-        const daysDifference = Math.floor((today - lastDonationDate) / (1000 * 60 * 60 * 24));
-        const availableAfter = 90 - daysDifference;
-        return availableAfter > 0 ? availableAfter : 0;
+        if (!lastDonation) return 0;
+        const days = Math.floor((new Date() - new Date(lastDonation)) / (1000 * 60 * 60 * 24));
+        const remaining = 90 - days;
+        return remaining > 0 ? remaining : 0;
     };
 
     useEffect(() => {
@@ -30,7 +28,7 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
                 const res = await fetch(`${API_URL}/api/donors?bloodGroup=${encodeURIComponent(bg)}`);
                 const data = await res.json();
                 if (Array.isArray(data)) {
-                    setDonors(data.map(donor => ({ ...donor, availableAfter: calculateAvailability(donor.lastDonation) })));
+                    setDonors(data.map(donor => ({ ...donor, availableAfter: calculateAvailability(donor.lastBloodDonation) })));
                 } else {
                     setDonors([]);
                 }
@@ -54,10 +52,10 @@ const BloodGroupPage = ({ bloodGroup, searchTerm = "", availabilityFilter = "all
         return matchesSearch && matchesAvailability;
     });
 
-    const isDonorAvailable = (availableAfter) => availableAfter === 0 || availableAfter >= 999;
+    const isDonorAvailable = (availableAfter) => availableAfter === 0;
 
     const getAvailabilityMessage = (availableAfter) => {
-        if (availableAfter >= 999 || availableAfter === 0) return "Available";
+        if (availableAfter === 0) return "Available";
         return `Available in ${availableAfter} days`;
     };
 
