@@ -36,6 +36,7 @@ const Registration = () => {
       if (res.ok) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
+        window.dispatchEvent(new Event('userUpdated'));
         toast.success("Registration successful!", {
           position: "top-right",
           style: { top: "80px" },

@@ -1,6 +1,34 @@
-/* index.css or your custom CSS file */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.33%); }
+}
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Keyframe animation for the carousel */
+@keyframes gallery-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes gallery-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.gallery-row-left {
+  animation: gallery-left 30s linear infinite;
+  width: max-content;
+}
+.gallery-row-right {
+  animation: gallery-right 30s linear infinite;
+  width: max-content;
+}
+.gallery-row-left:hover,
+.gallery-row-right:hover {
+  animation-play-state: paused;
+}
+
 @keyframes carousel {
     0% {
       transform: translateX(0);

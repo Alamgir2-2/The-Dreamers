@@ -7,6 +7,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Branch {
+  id                 String   @id @default(uuid())
+  name               String   @unique
+  location           String?
+  phone              String?
+  email              String?
+  yearsActive        Int      @default(0)
+  bloodDonations     Int      @default(0)
+  presidentEducation String?
+  presidentQuote     String?
+  presidentMission   String?
+  memberIds          String[]
+  eventIds           String[]
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  presidentId        String?
+}
+
+model OrgPosition {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+}
+
+model OrgBranch {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+}
+
 model Donor {
   id           String   @id @default(uuid())
   name         String
@@ -23,34 +53,41 @@ model Donor {
 }
 
 model User {
-  id                String   @id @default(uuid())
+  id                String    @id @default(uuid())
   name              String
-  email             String   @unique
+  email             String    @unique
   password          String
+  bloodGroup        String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  college           String?
+  currentAddress    String?
+  department        String?
+  hscBatch          String?
+  lastBloodDonation DateTime?
+  mobile            String?
+  permanentAddress  String?
   photo             String?
   school            String?
   sscBatch          String?
-  college           String?
-  hscBatch          String?
   university        String?
-  department        String?
-  bloodGroup        String?
-  mobile            String?
-  permanentAddress  String?
-  currentAddress    String?
-  
-  // Profession fields
-  professionType    String?  // Student, Teacher, Doctor, Engineer, Army Person, Govt Job, Probasi
-  institution       String?  // Institution/Company/Hospital/Department
-  designation       String?  // Designation/Rank/Post
-  specialization    String?  // Subject/Specialization/Field
-  
-  // Organization fields
-  orgPosition       String?
+  designation       String?
+  institution       String?
   orgBranch         String?
   orgJoinDate       DateTime?
-  
-  lastBloodDonation DateTime?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  orgPosition       String?
+  professionType    String?
+  specialization    String?
+  isAdmin           Boolean   @default(false)
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  location    String?
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

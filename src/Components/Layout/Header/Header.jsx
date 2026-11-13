@@ -1,19 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { FaChevronDown, FaUser, FaSignOutAlt } from "react-icons/fa";
+import { FaChevronDown, FaUser, FaSignOutAlt, FaUserShield } from "react-icons/fa";
 import logo from "../../../assets/Images/logo.png";
 import API_URL from '../../../config/api';
-
-const branches = [
-    { name: "Samonta", path: "/branches/1" },
-    { name: "Jhinnah Nagar", path: "/branches/2" },
-    { name: "Mahespur", path: "/branches/3" },
-    { name: "Jhenaidah", path: "/branches/4" },
-    { name: "Jashore", path: "/branches/5" },
-    { name: "Rajshahi", path: "/branches/6" },
-    { name: "Dhaka", path: "/branches/7" },
-    { name: "Centrally controlled", path: "/branches/8" }
-];
 
 const aboutUsLinks = [
     { name: "About The Dreamers", path: "/about/the-dreamers" },
@@ -50,6 +39,14 @@ const UserDropdown = ({ user, navigate, handleLogout, setIsUserMenuOpen }) => (
                         </div>
                         My Profile
                     </Link>
+                    {user.isAdmin && (
+                        <Link to="/admin/dashboard" onClick={() => setIsUserMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-teal-50 text-teal-700 text-sm font-medium">
+                            <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
+                                <FaUserShield className="text-teal-600" size={12} />
+                            </div>
+                            Admin Dashboard
+                        </Link>
+                    )}
                     <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 text-sm font-medium">
                         <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
                             <FaSignOutAlt className="text-red-600" size={12} />
@@ -75,10 +72,18 @@ const Header = () => {
     const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
+    const [branches, setBranches] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
     const desktopUserMenuRef = useRef(null);
     const mobileUserMenuRef = useRef(null);
+
+    useEffect(() => {
+        fetch(`${API_URL}/api/branches`)
+            .then(r => r.json())
+            .then(data => Array.isArray(data) && setBranches(data.map(b => ({ name: b.name, path: `/branches/${b.id}` }))))
+            .catch(console.error);
+    }, []);
 
     useEffect(() => {
         setIsUserMenuOpen(false);
@@ -129,7 +134,7 @@ const Header = () => {
             });
             const data = await res.json();
             setUser(data);
-            localStorage.setItem('user', JSON.stringify({ id: data.id, name: data.name, email: data.email, photo: data.photo, orgPosition: data.orgPosition }));
+            localStorage.setItem('user', JSON.stringify({ id: data.id, name: data.name, email: data.email, photo: data.photo, orgPosition: data.orgPosition, isAdmin: data.isAdmin }));
         } catch (error) {
             console.error('Failed to fetch profile');
         }

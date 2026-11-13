@@ -19,11 +19,12 @@ app.post('/api/auth/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
+    const isAdmin = email === 'mahalamgir1213@gmail.com';
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword },
+      data: { name, email, password: hashedPassword, isAdmin },
     });
     const token = jwt.sign({ userId: user.id }, JWT_SECRET);
-    res.status(201).json({ token, user: { id: user.id, name: user.name, email: user.email } });
+    res.status(201).json({ token, user: { id: user.id, name: user.name, email: user.email, isAdmin: user.isAdmin } });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -38,7 +39,7 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
     const token = jwt.sign({ userId: user.id }, JWT_SECRET);
-    res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
+    res.json({ token, user: { id: user.id, name: user.name, email: user.email, isAdmin: user.isAdmin } });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -165,6 +166,149 @@ app.post('/api/upload', async (req, res) => {
   }
 });
 
+// Branch CRUD
+app.get('/api/branches', async (req, res) => {
+  try {
+    const branches = await prisma.branch.findMany({ orderBy: { createdAt: 'asc' } });
+    res.json(branches);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.get('/api/branches/:id', async (req, res) => {
+  try {
+    const branch = await prisma.branch.findUnique({ where: { id: req.params.id } });
+    if (!branch) return res.status(404).json({ error: 'Not found' });
+    res.json(branch);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.post('/api/branches', async (req, res) => {
+  try {
+    const { name, location, phone, email, yearsActive, bloodDonations, presidentId, presidentEducation, presidentQuote, presidentMission, memberIds, eventIds } = req.body;
+    const branch = await prisma.branch.create({ data: { name, location, phone, email, yearsActive: yearsActive||0, bloodDonations: bloodDonations||0, presidentId, presidentEducation, presidentQuote, presidentMission, memberIds: memberIds||[], eventIds: eventIds||[] } });
+    res.status(201).json(branch);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.put('/api/branches/:id', async (req, res) => {
+  try {
+    const { name, location, phone, email, yearsActive, bloodDonations, presidentId, presidentEducation, presidentQuote, presidentMission, memberIds, eventIds } = req.body;
+    const branch = await prisma.branch.update({ where: { id: req.params.id }, data: { name, location, phone, email, yearsActive: yearsActive||0, bloodDonations: bloodDonations||0, presidentId, presidentEducation, presidentQuote, presidentMission, memberIds: memberIds||[], eventIds: eventIds||[] } });
+    res.json(branch);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.delete('/api/branches/:id', async (req, res) => {
+  try {
+    await prisma.branch.delete({ where: { id: req.params.id } });
+    res.json({ message: 'Deleted' });
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+
+// OrgPositions
+app.get('/api/org-positions', async (req, res) => {
+  try {
+    const positions = await prisma.orgPosition.findMany({ orderBy: { createdAt: 'asc' } });
+    res.json(positions);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.post('/api/org-positions', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const position = await prisma.orgPosition.create({ data: { name } });
+    res.status(201).json(position);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.delete('/api/org-positions/:id', async (req, res) => {
+  try {
+    await prisma.orgPosition.delete({ where: { id: req.params.id } });
+    res.json({ message: 'Deleted' });
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+
+// OrgBranches
+app.get('/api/org-branches', async (req, res) => {
+  try {
+    const branches = await prisma.orgBranch.findMany({ orderBy: { createdAt: 'asc' } });
+    res.json(branches);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.post('/api/org-branches', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const branch = await prisma.orgBranch.create({ data: { name } });
+    res.status(201).json(branch);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.delete('/api/org-branches/:id', async (req, res) => {
+  try {
+    await prisma.orgBranch.delete({ where: { id: req.params.id } });
+    res.json({ message: 'Deleted' });
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+
+// Toggle admin role
+app.put('/api/members/:id/make-admin', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isAdmin } = req.body;
+    const user = await prisma.user.update({ where: { id }, data: { isAdmin } });
+    res.json({ id: user.id, isAdmin: user.isAdmin });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete member (admin)
+app.delete('/api/members/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await prisma.user.delete({ where: { id } });
+    res.json({ message: 'Member deleted' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update member org info (admin)
+app.put('/api/members/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { orgPosition, orgBranch } = req.body;
+    const user = await prisma.user.update({
+      where: { id },
+      data: { orgPosition, orgBranch },
+    });
+    res.json({ id: user.id, orgPosition: user.orgPosition, orgBranch: user.orgBranch });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Events CRUD
+app.get('/api/events', async (req, res) => {
+  try {
+    const events = await prisma.event.findMany({ orderBy: { date: 'desc' } });
+    res.json(events);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.post('/api/events', async (req, res) => {
+  try {
+    const { title, description, date, location, image } = req.body;
+    const event = await prisma.event.create({ data: { title, description, date: new Date(date), location, image } });
+    res.status(201).json(event);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.put('/api/events/:id', async (req, res) => {
+  try {
+    const { title, description, date, location, image } = req.body;
+    const event = await prisma.event.update({ where: { id: req.params.id }, data: { title, description, date: new Date(date), location, image } });
+    res.json(event);
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+app.delete('/api/events/:id', async (req, res) => {
+  try {
+    await prisma.event.delete({ where: { id: req.params.id } });
+    res.json({ message: 'Deleted' });
+  } catch (error) { res.status(500).json({ error: error.message }); }
+});
+
 // Get all members
 app.get('/api/members', async (req, res) => {
   try {
@@ -186,6 +330,7 @@ app.get('/api/members', async (req, res) => {
         currentAddress: true,
         mobile: true,
         email: true,
+        isAdmin: true,
       },
       orderBy: { createdAt: 'desc' },
     });

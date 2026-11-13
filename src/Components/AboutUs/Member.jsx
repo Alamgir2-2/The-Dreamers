@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Users, User, Search, Filter, X, Phone, Mail, MapPin, Droplet, Calendar, Building, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { Users, User, Search, Filter, X, Phone, Mail, MapPin, Droplet, Calendar, Building, ChevronLeft, ChevronRight, ChevronDown, LayoutGrid, List } from 'lucide-react';
 import API_URL from '../../config/api';
 
 const imageVariants = {
@@ -56,6 +56,7 @@ const Members = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [positionOpen, setPositionOpen] = useState(false);
   const [professionOpen, setProfessionOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('grid');
   const positionRef = useRef(null);
   const professionRef = useRef(null);
   const itemsPerPage = 20;
@@ -115,7 +116,7 @@ const Members = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
 
       {/* ── Member Detail Modal ── */}
       {selectedMember && (
@@ -218,7 +219,7 @@ const Members = () => {
       )}
 
       {/* ── Hero Header ── */}
-      <div className="relative overflow-visible" style={{ zIndex: 10 }}>
+      <div className="relative" style={{ zIndex: 10 }}>
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#078d83] via-[#056e66] to-[#034d47]" />
         {/* Decorative circles */}
@@ -331,8 +332,8 @@ const Members = () => {
 
               </div>
 
-              {/* Active filter chips */}
-              {(selectedPosition || selectedProfession) && (
+              {/* Active filter chips + view toggle */}
+              <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-wrap gap-2">
                   {selectedPosition && (
                     <button onClick={() => setSelectedPosition('')} className="flex items-center gap-1.5 bg-white/20 border border-white/30 rounded-full px-3 py-1 text-xs text-white hover:bg-white/30 transition-all">
@@ -345,7 +346,15 @@ const Members = () => {
                     </button>
                   )}
                 </div>
-              )}
+                <div className="flex bg-white/10 border border-white/20 rounded-xl overflow-hidden flex-shrink-0">
+                  <button onClick={() => setViewMode('grid')} className={`flex items-center gap-1 px-3 py-1.5 text-xs font-medium transition-colors ${viewMode === 'grid' ? 'bg-white text-[#078d83]' : 'text-white/70 hover:bg-white/10'}`}>
+                    <LayoutGrid size={13} /> Grid
+                  </button>
+                  <button onClick={() => setViewMode('list')} className={`flex items-center gap-1 px-3 py-1.5 text-xs font-medium transition-colors ${viewMode === 'list' ? 'bg-white text-[#078d83]' : 'text-white/70 hover:bg-white/10'}`}>
+                    <List size={13} /> List
+                  </button>
+                </div>
+              </div>
             </motion.div>
 
           </div>
@@ -359,15 +368,54 @@ const Members = () => {
         </div>
       </div>
 
-      {/* ── Members Grid ── */}
+      {/* ── Members Grid / List ── */}
       <div className="relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {paginatedMembers.length > 0 ? (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-20 lg:gap-8 pt-6 sm:pt-12">
-              {paginatedMembers.map(member => (
-                <MemberCard key={`${member.id}-${currentPage}`} member={member} onClick={setSelectedMember} />
-              ))}
-            </div>
+            {viewMode === 'grid' && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-8 pt-6 sm:pt-12">
+                {paginatedMembers.map(member => (
+                  <MemberCard key={`${member.id}-${currentPage}`} member={member} onClick={setSelectedMember} />
+                ))}
+              </div>
+            )}
+            {viewMode === 'list' && (
+              <div className="pt-6 bg-white rounded-2xl border border-gray-100 shadow-sm mt-6">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-50 border-b border-gray-200">
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Member</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide hidden sm:table-cell">Position</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide hidden md:table-cell">Profession</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide hidden lg:table-cell">Institution</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Blood</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paginatedMembers.map(member => (
+                      <tr key={member.id} onClick={() => setSelectedMember(member)} className="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer">
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 bg-gray-100 flex items-center justify-center">
+                              {member.photo ? <img src={member.photo} alt={member.name} className="w-full h-full object-cover" /> : <User size={16} className="text-gray-400" />}
+                            </div>
+                            <span className="font-medium text-gray-800">{member.name}</span>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 hidden sm:table-cell text-gray-500">{member.orgPosition || '—'}</td>
+                        <td className="px-4 py-3 hidden md:table-cell text-gray-500">{member.professionType || '—'}</td>
+                        <td className="px-4 py-3 hidden lg:table-cell text-gray-500 max-w-[160px] truncate">{member.institution || '—'}</td>
+                        <td className="px-4 py-3">
+                          {member.bloodGroup
+                            ? <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">{member.bloodGroup}</span>
+                            : <span className="text-gray-400">—</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-2 mt-12 mb-8">
                 <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="p-2 rounded-lg border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100">

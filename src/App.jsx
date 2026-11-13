@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import './App.css'
 import Home from './Components/Home/HomePage'
@@ -18,7 +18,6 @@ import Login from './Authentication/Login'
 import ScrollToTop from './Components/Layout/ScrollTop'
 import TestDonors from './Components/TestDonors'
 import Profile from './Components/Profile/Profile'
-import AdminLogin from './Admin/AdminLogin'
 import AdminLayout from './Admin/AdminLayout'
 import Dashboard from './Admin/Dashboard'
 import ManageBloodBank from './Admin/ManageBloodBank'
@@ -30,13 +29,16 @@ import ProtectedRoute from './Admin/ProtectedRoute'
 import UserProtectedRoute from './Components/UserProtectedRoute'
 
 function App() {
+  const location = useLocation();
+  const hideFooter = location.pathname === '/blood';
   return (
-    <div>
+    <div className={`${hideFooter ? 'h-screen overflow-hidden flex flex-col' : ''}`}>
       <Toaster position="top-right" />
       <Header></Header>
       <ScrollToTop/>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
+      <div className={hideFooter ? 'flex-1 overflow-hidden' : ''}>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
         <Route path="/branches/:id" element={<BranchPage></BranchPage>} />
         <Route path="/blood-groups/:bloodGroup" element={<BloodGroupPage></BloodGroupPage>} />
         <Route path="/blood" element={<BloodBank></BloodBank>} />
@@ -56,8 +58,8 @@ function App() {
         <Route path="/login" element={<Login/>} />
 
         {/* Admin Routes */}
-        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="blood-bank" element={<ManageBloodBank />} />
           <Route path="events" element={<ManageEvents />} />
@@ -65,8 +67,9 @@ function App() {
           <Route path="branches" element={<ManageBranches />} />
           <Route path="messages" element={<ManageMessages />} />
         </Route>
-      </Routes>
-      <Footer></Footer>
+        </Routes>
+      </div>
+      {!hideFooter && <Footer />}
 
     </div>
   )

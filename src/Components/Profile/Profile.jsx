@@ -193,12 +193,16 @@ const Profile = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({});
     const [uploading, setUploading] = useState(false);
+    const [orgPositions, setOrgPositions] = useState([]);
+    const [orgBranches, setOrgBranches] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) { navigate('/login'); return; }
         fetchProfile();
+        fetch(`${API_URL}/api/org-positions`).then(r => r.json()).then(data => setOrgPositions(data.map(p => ({ value: p.name, label: p.name })))).catch(() => {});
+        fetch(`${API_URL}/api/org-branches`).then(r => r.json()).then(data => setOrgBranches(data.map(b => ({ value: b.name, label: b.name })))).catch(() => {});
     }, []);
 
     const fetchProfile = async () => {
@@ -633,10 +637,10 @@ const Profile = () => {
                                 <span className="p-card-title">Organization — The Dreamers</span>
                             </div>
                             <PF label="Position / Designation">
-                                <input className="p-input" type="text" value={formData.orgPosition || ''} onChange={e => setFormData(f => ({ ...f, orgPosition: e.target.value }))} disabled={!isEditing} placeholder="e.g., Member, Volunteer, Executive" />
+                                <CustomSelect value={formData.orgPosition || ''} onChange={set('orgPosition')} options={orgPositions} placeholder="Select position" disabled={!isEditing} />
                             </PF>
                             <PF label="Branch">
-                                <input className="p-input" type="text" value={formData.orgBranch || ''} onChange={e => setFormData(f => ({ ...f, orgBranch: e.target.value }))} disabled={!isEditing} />
+                                <CustomSelect value={formData.orgBranch || ''} onChange={set('orgBranch')} options={orgBranches} placeholder="Select branch" disabled={!isEditing} />
                             </PF>
                             <PF label="Joining Date" icon={<FaCalendar />}>
                                 <CustomDatePicker value={formData.orgJoinDate?.split('T')[0] || ''} onChange={set('orgJoinDate')} disabled={!isEditing} />
