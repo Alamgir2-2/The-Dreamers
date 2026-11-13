@@ -228,54 +228,34 @@ const BloodBankPage = () => {
           {activeSection === "home" && (
             <div>
               {/* Hero */}
-              <div className="relative bg-gradient-to-br from-[#078d83] via-[#067a71] to-[#056e66] text-white">
+              <div className="relative bg-gradient-to-br from-[#078d83] via-[#067a71] to-[#056e66] text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
-                <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/5" />
-                <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-white/5" />
-                <div className="relative z-10 px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-6 w-full">
+                <div className="relative z-10 px-6 py-8 flex flex-col sm:flex-row sm:items-center gap-6">
                   <div className="flex-1">
-                    <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium mb-3 text-red-900">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" /> Active Blood Bank
+                    <div className="inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1 text-xs font-medium mb-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" /> Active Blood Bank
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-2">Donate Blood, Save Lives</h2>
-                    <p className="text-white/80 text-sm max-w-md mb-4">Every 2 seconds someone needs blood. Be a hero, your single donation can save up to 3 lives.</p>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-1">Donate Blood, Save Lives</h2>
+                    <p className="text-white/75 text-sm mb-2"
+                      style={{ fontFamily: "'Noto Serif Bengali', serif" }}>
+                      মানবতার টানে এগিয়ে আসি রক্তদানে
+                    </p>
+                    <p className="text-white/70 text-sm max-w-md mb-4">Every 2 seconds someone needs blood. Your single donation can save up to 3 lives.</p>
                     <div className="flex flex-wrap gap-2">
-                      <button onClick={() => goTo("b-positive")} className="flex items-center gap-2 bg-white text-[#078d83] font-semibold px-4 py-2 rounded-xl text-sm hover:bg-gray-50 transition-colors shadow-lg">
+                      <button onClick={() => goTo("b-positive")} className="flex items-center gap-2 bg-white text-[#078d83] font-semibold px-4 py-2 rounded-xl text-sm hover:bg-gray-50 transition-colors shadow">
                         <Search size={14} /> Find a Donor
                       </button>
-                      <button onClick={() => goTo("activities")} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 text-white font-medium px-4 py-2 rounded-xl text-sm hover:bg-white/30 transition-colors">
+                      <button onClick={() => goTo("activities")} className="flex items-center gap-2 bg-white/20 border border-white/30 text-white font-medium px-4 py-2 rounded-xl text-sm hover:bg-white/30 transition-colors">
                         Our Activities <ChevronRight size={14} />
                       </button>
                     </div>
                   </div>
-
-                  {/* Fancy Bengali Quote — absolute center */}
-                  <div className="hidden sm:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center px-6 py-4">
-                    <div className="relative text-center">
-                      <div className="text-white/30 text-5xl font-serif leading-none mb-1 select-none">❝</div>
-                      <p className="text-white text-xl sm:text-2xl font-bold leading-snug tracking-wide"
-                        style={{ fontFamily: "'Noto Serif Bengali', serif", fontWeight: 900, textShadow: "0 2px 16px rgba(0,0,0,0.4), 0 0 40px rgba(255,255,255,0.1)" }}>
-                        মানবতার টানে
-                      </p>
-                      <div className="flex items-center gap-2 my-1.5 justify-center">
-                        <div className="h-px w-8 bg-white/40" />
-                        <Droplet size={12} className="text-red-500 fill-red-500" />
-                        <div className="h-px w-8 bg-white/40" />
-                      </div>
-                      <p className="text-white text-xl sm:text-2xl font-bold leading-snug tracking-wide"
-                        style={{ fontFamily: "'Noto Serif Bengali', serif", fontWeight: 900, textShadow: "0 2px 16px rgba(0,0,0,0.4), 0 0 40px rgba(255,255,255,0.1)" }}>
-                        এগিয়ে আসি রক্তদানে
-                      </p>
-                      <div className="text-white/30 text-5xl font-serif leading-none mt-1 select-none">❞</div>
-                    </div>
-                  </div>
-
-                  {/* Quick stats inline */}
-                  <div className="flex sm:flex-col gap-3 flex-wrap">
+                  <div className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:min-w-[140px]">
                     {[
                       { value: "500+", label: "Donors", icon: Droplet, color: "text-red-300" },
                       { value: "1,200+", label: "Lives Saved", icon: Heart, color: "text-pink-300" },
-                      { value: "20+", label: "Campaigns", icon: Activity, color: "text-green-300" },
+                      { value: "48", label: "Campaigns", icon: Activity, color: "text-green-300" },
+                      { value: "120+", label: "Volunteers", icon: Users, color: "text-blue-300" },
                     ].map(({ value, label, icon: Icon, color }) => (
                       <div key={label} className="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2">
                         <Icon size={14} className={color} />
@@ -287,11 +267,6 @@ const BloodBankPage = () => {
                     ))}
                   </div>
                 </div>
-              </div>
-              <div className="relative h-6 sm:h-8 bg-[#056e66]">
-                <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute bottom-0 w-full" preserveAspectRatio="none">
-                  <path d="M0 48 L0 24 Q360 0 720 24 Q1080 48 1440 24 L1440 48 Z" fill="#f9fafb" />
-                </svg>
               </div>
 
               {/* Blood Group Quick Select */}
@@ -306,9 +281,9 @@ const BloodBankPage = () => {
                       <button
                         key={g.path}
                         onClick={() => goTo(g.path)}
-                        className="flex flex-col items-center justify-center py-2.5 rounded-xl border-2 border-red-100 bg-red-50 hover:bg-red-500 hover:text-white hover:border-red-500 text-red-600 font-bold text-sm transition-all group"
+                        className="flex flex-col items-center justify-center py-3 rounded-xl border-2 border-red-100 bg-red-50 hover:bg-red-500 hover:text-white hover:border-red-500 text-red-600 font-bold text-sm transition-all group"
                       >
-                        <Droplet size={12} className="mb-0.5 opacity-60 group-hover:opacity-100" />
+                        <Droplet size={12} className="mb-1 opacity-50 group-hover:opacity-100" />
                         {g.label}
                       </button>
                     ))}
@@ -316,8 +291,8 @@ const BloodBankPage = () => {
                 </div>
               </div>
 
-              {/* Emergency + Blood Compatibility + Donation Process */}
-              <div className="px-4 pb-4 grid sm:grid-cols-3 gap-4">
+              {/* Emergency + Myths/Dos&Don'ts */}
+              <div className="px-4 pb-4 grid sm:grid-cols-2 gap-4">
 
                 {/* Emergency */}
                 <div className="bg-gradient-to-br from-red-500 to-red-700 rounded-2xl p-5 text-white flex flex-col">
@@ -348,15 +323,36 @@ const BloodBankPage = () => {
                   </button>
                 </div>
 
-                {/* Did You Know */}
+                {/* Myths + Dos&Don'ts tabbed */}
                 <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 bg-yellow-50 rounded-lg flex items-center justify-center">
-                      <span className="text-base">💡</span>
-                    </div>
-                    <h3 className="font-semibold text-gray-800 text-sm">রক্তদান সম্পর্কে ভুল ধারণা</h3>
+                  <div className="flex rounded-xl bg-gray-100 p-1 mb-4 gap-1">
+                    <button
+                      onClick={() => {}}
+                      id="tab-myths"
+                      className="flex-1 text-xs font-semibold py-1.5 rounded-lg bg-white shadow-sm text-gray-800 transition-all"
+                      onMouseDown={e => {
+                        document.getElementById('tab-myths').classList.add('bg-white','shadow-sm','text-gray-800');
+                        document.getElementById('tab-myths').classList.remove('bg-transparent','text-gray-500');
+                        document.getElementById('tab-dos').classList.remove('bg-white','shadow-sm','text-gray-800');
+                        document.getElementById('tab-dos').classList.add('bg-transparent','text-gray-500');
+                        document.getElementById('panel-myths').classList.remove('hidden');
+                        document.getElementById('panel-dos').classList.add('hidden');
+                      }}
+                    >💡 ভুল ধারণা</button>
+                    <button
+                      id="tab-dos"
+                      className="flex-1 text-xs font-semibold py-1.5 rounded-lg bg-transparent text-gray-500 transition-all"
+                      onMouseDown={e => {
+                        document.getElementById('tab-dos').classList.add('bg-white','shadow-sm','text-gray-800');
+                        document.getElementById('tab-dos').classList.remove('bg-transparent','text-gray-500');
+                        document.getElementById('tab-myths').classList.remove('bg-white','shadow-sm','text-gray-800');
+                        document.getElementById('tab-myths').classList.add('bg-transparent','text-gray-500');
+                        document.getElementById('panel-dos').classList.remove('hidden');
+                        document.getElementById('panel-myths').classList.add('hidden');
+                      }}
+                    >✅ করণীয়</button>
                   </div>
-                  <div className="space-y-2 flex-1">
+                  <div id="panel-myths" className="space-y-2 flex-1">
                     {[
                       { myth: "রক্ত দিলে দুর্বল হয়ে যায়", fact: "মাত্র ৪৮ ঘণ্টায় রক্ত পুনরায় তৈরি হয়" },
                       { myth: "রক্ত দিলে সংক্রমণ হয়", fact: "সরঞ্জাম সবসময় নতুন ব্যবহার করা হয়" },
@@ -375,22 +371,7 @@ const BloodBankPage = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 pt-3 border-t border-gray-100 bg-gradient-to-r from-red-500 to-rose-500 rounded-xl px-4 py-3 text-center">
-                    <p className="text-white text-xs font-bold">🩸 প্রতি ২ সেকেন্ডে একজন মানুষের রক্তের প্রয়োজন হয়</p>
-                    <p className="text-white/80 text-[10px] mt-0.5">আপনার একটি দান তিনটি জীবন বাঁচাতে পারে</p>
-                  </div>
-                </div>
-
-                {/* Before Donation Do's & Don'ts */}
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-8 h-8 bg-[#078d83]/10 rounded-lg flex items-center justify-center">
-                      <Activity size={15} className="text-[#078d83]" />
-                    </div>
-                    <h3 className="font-semibold text-gray-800 text-sm">রক্তদানের আগে যা করবেন</h3>
-                  </div>
-                  <p className="text-[10px] text-gray-400 mb-3">সঠিক প্রস্তুতি নিরাপদ দান নিশ্চিত করে</p>
-                  <div className="space-y-1.5 flex-1">
+                  <div id="panel-dos" className="hidden space-y-1.5 flex-1">
                     {[
                       { do: true,  text: "প্রচুর পানি পান করুন (২–৩ গ্লাস)" },
                       { do: true,  text: "হালকা খাবার খেয়ে আসুন" },
@@ -404,22 +385,11 @@ const BloodBankPage = () => {
                         <p className={`text-xs font-medium ${isDo ? "text-green-700" : "text-red-600"}`}>{text}</p>
                       </div>
                     ))}
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-gray-100">
-                    <p className="text-[10px] text-gray-500 text-center">✅ ১৮–৬০ বছর বয়সী সুস্থ যেকেউ রক্ত দিতে পারেন</p>
-                    <p className="text-[10px] text-gray-500 text-center mt-0.5">✅ প্রতি ৩ মাস পর পর রক্ত দেওয়া যায়</p>
+                    <p className="text-[10px] text-gray-400 text-center pt-2">✅ ১৮–৬০ বছর বয়সী সুস্থ যেকেউ রক্ত দিতে পারেন · প্রতি ৩ মাস পর পর</p>
                   </div>
                 </div>
               </div>
 
-              {/* Motivational Quote Banner */}
-              <div className="px-4 pb-4">
-                <div className="relative bg-gradient-to-r from-red-600 via-red-500 to-rose-500 rounded-2xl px-6 py-5 text-white overflow-hidden">
-                  <div className="absolute right-6 top-1/2 -translate-y-1/2 text-white/10 text-9xl font-serif leading-none select-none">❝</div>
-                  <p className="relative text-base font-semibold italic max-w-2xl">“The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one or even you.”</p>
-                  <p className="text-red-200 text-sm mt-2">— World Health Organization</p>
-                </div>
-              </div>
 
               {/* Blood Type Compatibility Table */}
               <div className="px-4 pb-4">
