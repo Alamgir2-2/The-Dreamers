@@ -123,13 +123,17 @@ const Home = () => {
 
       {/* ── MARQUEE STRIP ── */}
       <div className="bg-[#078d83] py-3 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...Array(3)].map((_, i) => (
-            <span key={i} className="text-white/80 text-xs font-medium tracking-widest uppercase mx-8">
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ x: ["-0%", "-50%"] }}
+          transition={{ duration: 12, ease: "linear", repeat: Infinity, repeatType: "loop" }}
+        >
+          {[...Array(4)].map((_, i) => (
+            <span key={i} className="text-white/80 text-xs font-medium tracking-widest uppercase flex-shrink-0 px-10">
               Blood Donation &nbsp;·&nbsp; Education Support &nbsp;·&nbsp; Tree Plantation &nbsp;·&nbsp; Community Service &nbsp;·&nbsp; Student Welfare &nbsp;·&nbsp; Social Impact &nbsp;·&nbsp;
             </span>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* ── ABOUT STRIP ── */}
